@@ -28,8 +28,8 @@
             <div class="lineRight"></div>
         </div>
 
-
-        <div class="circle-section">
+        <!-- PAGE SELECTION -->
+        <div class="selection-section hide">
             <div class="circle paper">
                 <div class="circle-color blue">
                     <img src="images/icon-paper.svg" alt="Icon Paper">
@@ -49,7 +49,49 @@
             </div>
         </div>
 
-        <button type="button">RULES</button>
+        <!-- OPPONENT SELECTION PAGE -->
+        <div class="opponent-section hide">
+            <div class="circle my-picked">
+                <h2>YOU PICKED</h2>
+                <div class="circle-color blue">
+                    <img src="images/icon-paper.svg" alt="Icon Paper">
+                </div>
+            </div>
+            
+            <div class="circle house-picked hide">
+                <h2>THE HOUSE PICKED</h2>
+                <div class="circle-color yellow">
+                    <img src="images/icon-scissors.svg" alt="Icon Scissors">
+                </div>
+            </div>
+
+            <div class="my-picked-zone"></div>
+            <div class="opponent-zone"></div>
+        </div>
+
+        <!-- RESULT PAGE -->
+        <div class="opponent-section result">
+            <div class="circle my-picked">
+                <h2>YOU PICKED</h2>
+                <div class="circle-color blue">
+                    <img src="images/icon-paper.svg" alt="Icon Paper">
+                </div>
+            </div>
+
+            <div class="result-message">
+                <h1>YOU WIN</h1>
+                <button class="replay-btn" type="button"> PLAY AGAIN</button>
+            </div>
+            
+            <div class="circle house-picked">
+                <h2>THE HOUSE PICKED</h2>
+                <div class="circle-color yellow">
+                    <img src="images/icon-scissors.svg" alt="Icon Scissors">
+                </div>
+            </div>
+        </div>
+
+        <button class="rules-btn" type="button">RULES</button>
 
     </div>
     <script src="rock-paper-game-app.js"></script>

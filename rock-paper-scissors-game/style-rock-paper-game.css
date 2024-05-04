@@ -3,14 +3,15 @@
 body{
     margin: 0;
     font-family: "Barlow Semi Condensed", sans-serif;
+    background: rgb(9,9,121);
+    background: radial-gradient(circle, hsl(214, 47%, 23%) 31%, hsl(237, 49%, 15%) 97%); 
     /* background-color: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%)); */
-    /* background-image: url("design/original/desktop-step-1.jpg"); */
-    background-color: hsl(214, 47%, 23%);
+    /* background-image: url("design/original/desktop-step-2.jpg"); */
+    /* background-color: hsl(214, 47%, 23%); */
     height: 100vh;
     width: 100%;
     color: white;
 }
-
 .container{
     width: 1000px;
     max-width: 85%;
@@ -21,6 +22,8 @@ body{
     position: relative;
 }
 
+
+/* -------------------- HEADER SECTION -------------------- */
 header{
     border: 3px solid hsl(217, 16%, 45%);
     width: 800px;
@@ -28,7 +31,7 @@ header{
     max-width: 60%;
     margin: auto;
     padding: 0px 30px;
-    border-radius: 10px;
+    border-radius: 15px;
 
     display: flex;
     justify-content: space-between;
@@ -37,7 +40,6 @@ header{
 ul{
     padding: 0px;
 }
-
 ul li{
     list-style: none;
     font-size: 2.5em;
@@ -48,7 +50,7 @@ ul li{
 .score-box{
     height: 100px;
     width: 150px;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 5px;
     background-color: white;
     color: hsl(229, 25%, 31%);
@@ -59,15 +61,18 @@ ul li{
     justify-content: space-around;
 }
 .score-box .score-number{
-    font-size: 3em;
-    font-weight: 800;
+    font-size: 3.5em;
+    font-weight: 700;
 }
 .score-box .score-title{
+    font-size: 1.5em;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     color: hsl(229, 64%, 46%);
 }
 
-/* ---------- CIRCLE SECTION ---------- */
-.circle-section{
+/* -------------------- SELECT PAGE -------------------- */
+.selection-section{
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;
@@ -148,7 +153,7 @@ ul li{
     cursor: pointer;
 }
 
-button{
+.rules-btn{
     position: absolute;
     right: 0px;
     bottom: 0px;
@@ -160,9 +165,116 @@ button{
     border: 1px solid white;
     transition: all 0.2s;
 }
-button:hover{
+.rules-btn:hover{
     cursor: pointer;
     background-color: rgb(000, 000, 000, 0.5);
+}
+
+
+/* -------------- OPPONENT SELECTION PAGE -------------- */
+.opponent-section{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+    height: 500px;
+    min-width: 650px;
+    width: 70%;
+    margin: 50px auto;
+    position: relative
+}
+h2{
+    position: absolute;
+    top: -100px;
+    letter-spacing: 0.1em;
+}
+.my-picked{
+    grid-column: 1;
+    grid-row: 1;
+}
+.house-picked{
+    grid-column: 2;
+    grid-row: 1;
+}
+.opponent-section .my-picked-zone .circle{
+    width: 250px;
+    height: 250px;
+    cursor: default;
+}
+.opponent-section .my-picked-zone .circle::after{
+    width: 225px;
+    height: 225px;
+}
+.opponent-section .my-picked-zone .circle-color{
+    width: 205px;
+    height: 205px;
+}
+/* background circle on step 2 (OPPONENT SELECTION PAGE) */
+.my-picked-zone, .opponent-zone{
+    height: 100px;
+    width: 100px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+}
+.my-picked-zone{
+    margin: auto;
+    grid-column: 1;
+    grid-row: 1;
+}
+.opponent-zone{
+    margin: auto;
+    grid-column: 2;
+    grid-row: 1;
+
+}
+
+
+/* -------------- RESULT PAGE -------------- */
+.result{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    min-width: 750px;
+    width: 85%;
+}
+.my-picked{
+    grid-column: 1;
+    grid-row: 1;
+}
+.result-message{
+    margin: auto;
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.result-message h1{
+    font-size: 2.5em;
+    letter-spacing: 0.1em;
+}
+.result-message .replay-btn{
+    padding: 10px 40px;
+    font-size: 0.6em;
+    font-weight: 600;
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.result-message .replay-btn:hover{
+    color: #9e142f;
+}
+.house-picked{
+    grid-column: 3;
+    grid-row: 1;
+}
+
+
+.hide{
+    display: none;
 }
 /* 
 - Paper Gradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%)
