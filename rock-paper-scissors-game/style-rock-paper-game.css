@@ -114,25 +114,25 @@ ul li{
     position: absolute;
     bottom: 0px;
 }
-.circle-color.blue{
+.circle-color.paper-color{
     border: 24px solid hsl(230, 89%, 62%);
 }
-.circle-color.blue:hover{
+.circle-color.paper-color:hover{
     border: 24px solid #2945c1;
     transition: all 0.2s;
 }
-.circle-color.yellow{
+.circle-color.scissors-color{
     border: 24px solid hsl(39, 89%, 49%);
     transition: all 0.2s;
 }
-.circle-color.yellow:hover{
+.circle-color.scissors-color:hover{
     border: 24px solid #c76c1b;
 }
-.circle-color.red{
+.circle-color.rock-color{
     border: 24px solid hsl(349, 71%, 52%);
     transition: all 0.2s;
 }
-.circle-color.red:hover{
+.circle-color.rock-color:hover{
     border: 24px solid #9e142f; 
 }
 
@@ -180,7 +180,7 @@ ul li{
     min-width: 650px;
     width: 70%;
     margin: 50px auto;
-    position: relative
+    position: relative;
 }
 h2{
     position: absolute;

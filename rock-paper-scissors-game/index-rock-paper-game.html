@@ -29,21 +29,21 @@
         </div>
 
         <!-- PAGE SELECTION -->
-        <div class="selection-section hide">
-            <div class="circle paper">
-                <div class="circle-color blue">
+        <div class="selection-section">
+            <div class="circle paper" onclick="getPicked('paper')">
+                <div class="circle-color paper-color">
                     <img src="images/icon-paper.svg" alt="Icon Paper">
                 </div>
             </div>
             
-            <div class="circle scissors">
-                <div class="circle-color yellow">
+            <div class="circle scissors" onclick="getPicked('scissors')">
+                <div class="circle-color scissors-color">
                     <img src="images/icon-scissors.svg" alt="Icon Scissors">
                 </div>
             </div>
             
-            <div class="circle rock">
-                <div class="circle-color red">
+            <div class="circle rock" onclick="getPicked('rock')">
+                <div class="circle-color rock-color">
                     <img src="images//icon-rock.svg" alt="Icon Rock">
                 </div>
             </div>
@@ -51,26 +51,26 @@
 
         <!-- OPPONENT SELECTION PAGE -->
         <div class="opponent-section hide">
-            <div class="circle my-picked">
+            <!-- <div class="circle my-picked">
                 <h2>YOU PICKED</h2>
-                <div class="circle-color blue">
+                <div class="circle-color paper-color">
                     <img src="images/icon-paper.svg" alt="Icon Paper">
                 </div>
-            </div>
+            </div> -->
             
-            <div class="circle house-picked hide">
+            <!-- <div class="circle house-picked hide">
                 <h2>THE HOUSE PICKED</h2>
                 <div class="circle-color yellow">
                     <img src="images/icon-scissors.svg" alt="Icon Scissors">
                 </div>
-            </div>
+            </div> -->
 
             <div class="my-picked-zone"></div>
             <div class="opponent-zone"></div>
         </div>
 
         <!-- RESULT PAGE -->
-        <div class="opponent-section result">
+        <div class="result hide"><!-- opponent-section -->
             <div class="circle my-picked">
                 <h2>YOU PICKED</h2>
                 <div class="circle-color blue">
