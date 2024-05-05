@@ -7,26 +7,40 @@ let selectionPage = document.querySelector('.selection-section');
 let opponentSelectionPage = document.querySelector('.opponent-section');
 let resultPage =  document.querySelector('.result');
 
+let resultMessage = document.querySelector('.result-message');
+let scoreDisplay = document.querySelector('.score-number');
+let playAgainBtn = document.querySelector('.replay-btn');
 
 /* ---------- INITIALISATION VARIABLES ---------- */
 
 let opponentArray = ['rock', 'paper', 'scissors'];
 let myPicked = '';
+let opponentPicked = '';
+let score = 0;
 
 
 /* ---------- FUNCTIONS      ---------- */
 function getPicked(selection){
     myPicked = selection;
-    waitHouseSelection();
+    changeDisplayStepTwo();
     addMyPickedToOpponentPage();
-    opponentSelection();
+    setTimeout(() => {
+        opponentSelection()}, "1000"
+    );
+    setTimeout(() => {
+        changeDisplayStepThree()}, "3000"
+    );
+    gettingResult();
+    updateScore();
 }
 
-function waitHouseSelection(){
+// Change the display after user selection
+function changeDisplayStepTwo(){
     selectionPage.classList.add('hide');
     opponentSelectionPage.classList.remove('hide');
 }
 
+// Display user selection on the step 2 page, waiting the opponent selection
 function addMyPickedToOpponentPage(){
     let circlePicked = document.createElement('div');
     circlePicked.setAttribute('class', 'circle my-picked');
@@ -40,9 +54,10 @@ function addMyPickedToOpponentPage(){
     opponentSelectionPage.appendChild(circlePicked);
 }
 
+// Get a random selection for the opponent, and display on the screen
 function opponentSelection(){
-    let random = Math.floor(Math.random() * 2 + 1);
-    console.log(random);
+    let random = Math.floor(Math.random() * 3);
+    
     let circlePicked = document.createElement('div');
     circlePicked.setAttribute('class', 'circle house-picked');
 
@@ -53,6 +68,73 @@ function opponentSelection(){
         </div>`;
 
     opponentSelectionPage.appendChild(circlePicked);
+    opponentPicked = opponentArray[random];
+}
+
+function displayResultCircle(){
+
+
+    // <div class="circle-color paper-color">
+    //     <img src="images/icon-paper.svg" alt="Icon Paper">
+    // </div>
+}
+
+// Display the result page
+function changeDisplayStepThree(){
+    opponentSelectionPage.classList.add('hide');
+    resultPage.classList.remove('hide');
+}
+
+// Get the result and display a message if the user Win or Lose
+function gettingResult(){
+    let messageTag = document.createElement('h1');
+    if(myPicked === opponentPicked){
+        messageTag.innerHTML += 'DRAW';
+        resultMessage.appendChild(messageTag);
+    }else{
+        if((myPicked === 'paper' && opponentPicked === 'scissors') || 
+            (myPicked === 'scissors' && opponentPicked === 'rock') ||
+            (myPicked === 'rock' && opponentPicked === 'paper')){
+            messageTag.innerHTML += 'YOU LOSE';
+            resultMessage.appendChild(messageTag);
+            if(score > 0){
+                score--;
+            }
+        }else{
+            messageTag.innerHTML += 'YOU WIN';
+            resultMessage.appendChild(messageTag);
+            score++;
+        }
+    }
+    
+    console.log(`my picked : ${myPicked}`);
+    console.log(`house picked : ${opponentPicked}`);
+}
+
+function displayResult(){
+    // <div class="result-message">
+    //     <!-- <h1>YOU WIN</h1> -->
+    //     <button class="replay-btn" type="button"> PLAY AGAIN</button>
+    // </div>
+}
+
+// Update the score displayed according to the result
+function updateScore(){
+    scoreDisplay = '';
+    scoreDisplay.innerHTML = score;
 }
 
 
+function playAgain(){
+    resultPage.classList.add('hide');
+    selectionPage.classList.remove('hide');
+}
+
+// Event for the "Play Again" button, executing the playAgain() function to reinitilisate the page 
+playAgainBtn.addEventListener('click', () => {
+    playAgain();
+    opponentPicked = '';
+    myPicked = '';
+});
+
+//gettingResult(), reinitialiser la balise Message result

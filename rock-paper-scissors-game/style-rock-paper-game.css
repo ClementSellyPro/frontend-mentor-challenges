@@ -234,6 +234,7 @@ h2{
     grid-template-columns: repeat(3, 1fr);
     min-width: 750px;
     width: 85%;
+    margin-top: 150px;
 }
 .my-picked{
     grid-column: 1;
@@ -267,7 +268,7 @@ h2{
 .result-message .replay-btn:hover{
     color: #9e142f;
 }
-.house-picked{
+.result .house-picked{
     grid-column: 3;
     grid-row: 1;
 }
