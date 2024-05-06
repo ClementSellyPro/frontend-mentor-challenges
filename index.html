@@ -6,50 +6,82 @@
     <title>Document</title>
     <script src="https://kit.fontawesome.com/749ee16879.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styleIndex.css">
+    <link rel="shortcut icon" href="#">
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="home"><a href="./index.html"><i class="fa-solid fa-house fa-2xs"></i> HOME</a></div>
-            <h1>CHALLENGE FROM <a href="https://www.frontendmentor.io/">FRONTEND MENTOR</a></h1>    
+            <a class="home-link" href="./index.html">
+                <img class="home-icon" src="images/icon/accueil.png" alt=""> 
+                <span class="home-background">HOME</span>
+                <span class="home-foreground">HOME</span>
+            </a>
+            <h1>Challenge from <a href="https://www.frontendmentor.io/">Frontend Mentor</a></h1>    
         </header>
 
-        <h2>The Projects</h2>
 
         <div class="projectList">
-            <a href="rock-paper-scissors-game/index-rock-paper-game.html">
-                <div class="project rockPaper">
-                    <img src="images/projectMinia/rock-paper-scissors-game.png" alt="">
+            <div class="project rock-paper">
+                <div class="project-image-group">
+                    <a href="rock-paper-scissors-game/index-rock-paper-game.html">
+                        <img src="images/projectMinia/rock-paper-scissors-game.png" alt="">
+                    </a>
                 </div>
-            </a>
-
-            <div class="project jobList">
-                <img src="images/projectMinia/job-listing-image.png" alt="">
+                
+                <a href="rock-paper-scissors-game/index-rock-paper-game.html">
+                    <h3>Rock, Paper, Scissors Game</h3>
+                </a>
             </div>
 
+            <div class="project interactive-card">
+                <div class="project-image-group">
+                    <a href="#">
+                        <img src="images/projectMinia/interactive-card.png" alt="">
+                    </a>
+                </div>
+                <a href="#">
+                    <h3>Job listing Page</h3>
+                </a>
+            </div>
+
+            <div class="project todo-app">
+                <div class="project-image-group">
+                    <a href="#">
+                        <img src="images/projectMinia/todo-app.png" alt="">
+                    </a>
+                </div>
+                <a href="#">
+                    <h3>Todo App</h3>
+                </a>
+            </div>
             
-            <div class="project rockPaper">
-                <img src="images/projectMinia/rock-paper-scissors-game.png" alt="">
+            <div class="project job-listing">
+                <div class="project-image-group">
+                    <a href="#">
+                        <img src="images/projectMinia/job-listing-image.png" alt="">
+                    </a>
+                </div>
+                <a href="#">
+                    <h3>Job listing Page</h3>
+                </a>
             </div>
-
-            <div class="project jobList">
-                <img src="images/projectMinia/job-listing-image.png" alt="">
-            </div>
-
-            <div class="project jobList">
-                <img src="images/projectMinia/job-listing-image.png" alt="">
-            </div>
-
             
-            <div class="project rockPaper">
-                <img src="images/projectMinia/rock-paper-scissors-game.png" alt="">
-            </div>
-
-            <div class="project jobList">
-                <img src="images/projectMinia/job-listing-image.png" alt="">
+            <div class="project e-commerce">
+                <div class="project-image-group">
+                    <a href="#">
+                        <img src="images/projectMinia/e-commerce.png" alt="">
+                    </a>
+                </div>
+                <a href="#">
+                    <h3>E-Commerce Page</h3>
+                </a>
             </div>
         </div>
         
+        <div class="scroll-message">
+            <p>scroll for more </p>
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
     </div>
     
     <script src="app.js"></script>
