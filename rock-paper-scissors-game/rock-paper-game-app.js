@@ -6,8 +6,10 @@ let rock = document.querySelector('.rock');
 let selectionPage = document.querySelector('.selection-section');
 let opponentSelectionPage = document.querySelector('.opponent-section');
 let resultPage =  document.querySelector('.result');
+let resultPageMyPicked = document.querySelector('.result .my-picked');
+let resultPageOpponentPicked = document.querySelector('.result .house-picked');
 
-let resultMessage = document.querySelector('.result-message');
+let resultMessage = document.querySelector('.result-message-text');
 let scoreDisplay = document.querySelector('.score-number');
 let playAgainBtn = document.querySelector('.replay-btn');
 
@@ -30,12 +32,14 @@ function getPicked(selection){
     setTimeout(() => {
         changeDisplayStepThree()}, "3000"
     );
+    displaySelectionOnResultPage();
     gettingResult();
     updateScore();
 }
 
 // Change the display after user selection
 function changeDisplayStepTwo(){
+    opponentSelectionPage.innerHTML = '';
     selectionPage.classList.add('hide');
     opponentSelectionPage.classList.remove('hide');
 }
@@ -58,25 +62,19 @@ function addMyPickedToOpponentPage(){
 function opponentSelection(){
     let random = Math.floor(Math.random() * 3);
     
+    opponentPicked = opponentArray[random];
+    
     let circlePicked = document.createElement('div');
     circlePicked.setAttribute('class', 'circle house-picked');
 
     circlePicked.innerHTML = `
         <h2>THE HOUSE PICKED</h2>
-        <div class="circle-color ${opponentArray[random]}-color">
-            <img src="images/icon-${opponentArray[random]}.svg" alt="Icon ${opponentArray[random]}">
+        <div class="circle-color ${opponentPicked}-color">
+            <img src="images/icon-${opponentPicked}.svg" alt="Icon ${opponentPicked}">
         </div>`;
 
     opponentSelectionPage.appendChild(circlePicked);
-    opponentPicked = opponentArray[random];
-}
-
-function displayResultCircle(){
-
-
-    // <div class="circle-color paper-color">
-    //     <img src="images/icon-paper.svg" alt="Icon Paper">
-    // </div>
+    console.log(`inside ${opponentPicked}`);
 }
 
 // Display the result page
@@ -85,24 +83,35 @@ function changeDisplayStepThree(){
     resultPage.classList.remove('hide');
 }
 
+function displaySelectionOnResultPage(){
+    resultPageMyPicked.innerHTML = `
+    <div class="circle-color ${myPicked}-color">
+        <img src="images/icon-${myPicked}.svg" alt="Icon ${myPicked}">
+    </div>
+    `
+    resultPageOpponentPicked = `
+    <div class="circle-color ${opponentPicked}-color">
+        <img src="images/icon-${opponentPicked}.svg" alt="Icon ${opponentPicked}">
+    </div>
+    `
+    
+}
+
 // Get the result and display a message if the user Win or Lose
 function gettingResult(){
-    let messageTag = document.createElement('h1');
+    resultMessage.innerHTML = '';
     if(myPicked === opponentPicked){
-        messageTag.innerHTML += 'DRAW';
-        resultMessage.appendChild(messageTag);
+        resultMessage.innerHTML = 'DRAW';
     }else{
         if((myPicked === 'paper' && opponentPicked === 'scissors') || 
             (myPicked === 'scissors' && opponentPicked === 'rock') ||
             (myPicked === 'rock' && opponentPicked === 'paper')){
-            messageTag.innerHTML += 'YOU LOSE';
-            resultMessage.appendChild(messageTag);
+            resultMessage.innerHTML = 'YOU LOSE';
             if(score > 0){
                 score--;
             }
         }else{
-            messageTag.innerHTML += 'YOU WIN';
-            resultMessage.appendChild(messageTag);
+            resultMessage.innerHTML = 'YOU YOU'; //WIN
             score++;
         }
     }
@@ -121,7 +130,7 @@ function displayResult(){
 // Update the score displayed according to the result
 function updateScore(){
     scoreDisplay = '';
-    scoreDisplay.innerHTML = score;
+    scoreDisplay.innerHTML = String(score);
 }
 
 
@@ -136,5 +145,3 @@ playAgainBtn.addEventListener('click', () => {
     opponentPicked = '';
     myPicked = '';
 });
-
-//gettingResult(), reinitialiser la balise Message result
