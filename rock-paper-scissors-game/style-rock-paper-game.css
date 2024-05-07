@@ -1,5 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* back to home link */
+.back-home{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    background-color: white;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.back-home:hover a img{
+    width: 50px;
+}
+.back-home a img{
+    width: 40px;
+    transition: all 0.2s;
+}
+
+
 body{
     margin: 0;
     font-family: "Barlow Semi Condensed", sans-serif;
@@ -13,7 +35,7 @@ body{
     color: white;
 }
 .container{
-    width: 1000px;
+    width: 850px;
     max-width: 85%;
     height: 100vh;
     margin: 50px auto;
