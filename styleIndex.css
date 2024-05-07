@@ -174,15 +174,12 @@ a{
         overflow: scroll;
     }
     .container{
-        width: 100%;
+        width: 90%;
     }
     header{
         padding: 20px 40px;
         height: 100px;
     }
-    /* .home-link span{
-        display: none;
-    } */
     .home-link{
         width: 180px;
     }
@@ -208,9 +205,10 @@ a{
 
     .projectList{
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
         width: 100%;
         overflow: hidden;
+        margin-left: 0px;
     }
     .project{
         width: 100%;
