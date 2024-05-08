@@ -181,10 +181,10 @@ a{
         height: 100px;
     }
     .home-link{
-        width: 180px;
+        width: 190px;
     }
     .home-background{
-        font-size: 2em;
+        font-size: 2.5em;
     }
     .home-background::before{
         display: none;
@@ -196,7 +196,7 @@ a{
         color: black;
     }
     .home-link img{
-        width: 60px;
+        width: 50px;
     }
 
     header h1{
@@ -231,6 +231,6 @@ a{
         display: none;
     }
     .home-link img{
-        width: 50px;
+        width: 40px;
     }
 }

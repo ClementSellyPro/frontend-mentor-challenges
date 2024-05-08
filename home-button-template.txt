@@ -1,0 +1,30 @@
+<!-- Button to go back home -->
+<div class="back-home">
+    <a href="../index.html">
+        <img src="../images/icon/accueil.png" alt="Home icon">
+    </a>
+</div>
+
+
+
+/* Button to go bak home */
+.back-home{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    background-color: white;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.back-home:hover a img{
+    width: 45px;
+}
+.back-home a img{
+    width: 40px;
+    transition: all 0.2s;
+}

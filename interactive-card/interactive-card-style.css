@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Button to go bak home */
+.back-home{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    background-color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.back-home:hover a img{
+    width: 45px;
+}
+.back-home a img{
+    width: 40px;
+    transition: all 0.2s;
+}
+
+body{
+    position: relative;
+    height: 100vh;
+    background-image: url("images/bg-main-desktop.png");
+    background-repeat: no-repeat;
+    font-family: "Space Grotesk", sans-serif;
+}
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 100px;
+}
+
+/* --------------- CARDS SECTION --------------- */
+.cardSection{
+    width: 40%;
+    min-width: 450px;
+    height: 550px;
+}
+
+.cardFrontSide{
+    display: block;
+    width: 70%;
+    min-width: 400px;
+    height: 235px;
+    border-radius: 5px;
+    background-image: url("images/bg-card-front.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: white;
+}
+.cardFrontSide-logo{
+    height: 50px;
+    padding: 25px;
+}
+.cardFrontSide-number{
+    height: 20px;
+    padding: 25px;
+    font-weight: 600;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+}
+.cardFrontSide-name-date{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 25px;
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+.cardBackSide{
+    display: block;
+    width: 70%;
+    min-width: 400px;
+    height: 235px;
+    border-radius: 5px;
+    background-image: url("images/bg-card-back.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-top: 20px;
+    margin-left: 10%;
+    color: white;
+}
+.cardBackSide-cvc{
+    height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 50px;
+}
+
+
+/* --------------- FORM SECTION --------------- */
+form{
+    height: 350px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+label{
+    font-size: 0.9em;
+}
+input{
+    height: 40px;
+    border-radius: 5px;
+    border: 1.5px solid rgb(189, 189, 189);
+    margin-top: 5px;
+    padding-left: 10px;
+}
+input:focus{
+    border: 1.5px solid hsl(270, 53%, 29%);
+    outline: none;
+}
+.cardNameSection input, .cardNumberSection input{
+    width: 100%;
+}
+
+.form-bottomSection{
+    display: flex;
+    justify-content: space-between;
+}
+.dateSection input{
+    width: 65px;
+}
+.cvcSection{
+    width: 170px;
+}
+.cvcSection input{
+    width: 100%;
+}
+
+button{
+    width: 100%;
+    height: 50px;
+    border: none;
+    background-color: hsl(278, 68%, 11%);
+    color: white;
+    font-size: 1.2em;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    border-radius: 5px;
+}
+button:hover{
+    cursor: pointer;
+    background-color: hsl(278, 66%, 18%);
+}
+
+.hide{
+    display: none;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    body{
+        background-image: url("images/bg-main-mobile.png");
+        background-size: 100%;
+    }
+    .container{
+        flex-direction: column;
+    }
+}
