@@ -164,10 +164,40 @@ button:hover{
 
 @media only screen and (max-width: 1000px) {
     body{
+        background-image: none;
+    }
+    .bg-mobile{
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 350px;
         background-image: url("images/bg-main-mobile.png");
         background-size: 100%;
+        background-repeat: no-repeat;
     }
     .container{
         flex-direction: column;
+    }
+
+    .cardSection{
+        display: flex;
+        flex-direction: column-reverse;
+        position: relative;
+        height: 400px;
+    }
+    .cardFrontSide{
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        z-index: 1;
+    }
+
+    .cardBackSide{
+        position: absolute;
+        top: 0px;
+
+    }
+    .cvcSection{
+        width: 50%;
     }
 }
