@@ -42,14 +42,15 @@
       </div>
     </div>
 
-    <form action="#">
+    <form action="#" class="formSection">
       <div class="cardNameSection">
         <label for="cardName">CARDHOLDER NAME</label><br>
         <input type="text" id="cardName" name="cardName" placeholder="e.g. Jane Appleseed" required>  
       </div>
       <div class="cardNumberSection">
         <label for="cardNumber">CARD NUMBER</label><br>
-        <input type="tel" id="cardNumber" name="cardNumber" placeholder="e.g. 1234 5678 9123 0000" maxlength="19" required>
+        <input type="tel" id="cardNumber" name="cardNumber" placeholder="e.g. 1234 5678 9123 0000"
+         maxlength="19" onkeyup="rewriteNumber(value)" required>
       </div>
       <div class="form-bottomSection">
         <div class="dateSection">
@@ -63,16 +64,16 @@
         </div>
       </div>
 
-      <button type="submit">Confirm</button>
+      <button class="validate-btn" type="submit">Confirm</button>
     </form>
   
 
   <!-- Completed state start -->
     <div class="validation-group hide">
       <img src="images/icon-complete.svg" alt="Complete Icon">
-      <h2 class="validation-title">Thank you!</h2>
+      <h2 class="validation-title">THANK YOU!</h2>
       <p class="validation-message">We've added your card details</p>
-      <button type="button">Continue</button>
+      <button class="continue-btn" type="button">Continue</button>
     </div>
   </div>
 

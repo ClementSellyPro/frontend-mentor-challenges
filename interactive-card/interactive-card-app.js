@@ -8,17 +8,23 @@ let dateOnCard = document.querySelector('.front-date');
 let cvcOnCard = document.querySelector('.cardBackSide-cvc');
 
 //form section
+let formSection = document.querySelector('.formSection');
 let nameInput = document.querySelector('#cardName');
 let numberInput = document.querySelector('#cardNumber');
 let monthInput = document.querySelector('#dateExpiration');
 let yearInput = document.querySelector('#dateExpiration-year');
 let cvcInput = document.querySelector('#cvc');
 
+let validateBtn = document.querySelector('.validate-btn');
+
+let validationSection = document.querySelector('.validation-group');
+let continueBtn = document.querySelector('.continue-btn');
+
 /* --------------- VARIABLE INITIALIZATION --------------- */
-let numberStorage = '0000 0000 0000 0000';
+let numberStorage = '0000000000000000';
 let nameStorage = '';
-let monthStorage = '';
-let yearStorage = '';
+let monthStorage = '00';
+let yearStorage = '00';
 let cvcStorage = '';
 
 
@@ -33,7 +39,7 @@ numberInput.addEventListener('keyup', (e) => {
     getNumber(e.target.value);
     numberOnCard.innerHTML = '';
     numberOnCard.innerHTML = numberStorage;
-})
+});
 
 monthInput.addEventListener('keyup', (e) => {
     getMonth(e.target.value);
@@ -42,14 +48,29 @@ monthInput.addEventListener('keyup', (e) => {
 yearInput.addEventListener('keyup', (e) => {
     getYear(e.target.value);
     displayDateOnCard();
-})
+});
 
 cvcInput.addEventListener('keyup', (e) => {
     getCVC(e.target.value);
     cvcOnCard.innerHTML = '';
     cvcOnCard.innerHTML = cvcStorage;
-})
+});
 
+
+validateBtn.addEventListener('click', () => {
+    nameInput.value = '';
+    numberInput.value = '';
+    monthInput.value = '';
+    yearInput.value = '';
+    cvcInput.value = '';
+    formSection.classList.add('hide');
+    validationSection.classList.remove('hide');
+});
+
+continueBtn.addEventListener('click', () => {
+    validationSection.classList.add('hide');
+    formSection.classList.remove('hide');
+});
 
 /* --------------- FUNCTIONS --------------- */
 function getName(input){
@@ -75,17 +96,17 @@ function getYear(input){
 function getCVC(input){
     cvcStorage = '';
     cvcStorage = input;
-    console.log(`cvcStorage is : ${cvcStorage}`);
-}
-
-function displayNumberOnCard(input){
-    numberStorage = '0000 0000 0000 0000'
-    for(let i = 0; i < input.length; i++){
-        numberStorage[i] = input[i];
-    }
 }
 
 function displayDateOnCard(){
     dateOnCard.innerHTML = '';
     dateOnCard.innerHTML = `${monthStorage}/${yearStorage}`
+}
+
+// onchange number field
+function rewriteNumber(value){
+    let newValue = value.replace(/[^0-9]/gi, '')
+    .replace(/(.{4})/g, '$1 ').trim();
+
+    numberInput.value = newValue;
 }
