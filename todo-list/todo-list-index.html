@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Todo app</title>
+
+  <link rel="stylesheet" href="todo-list-style.css">
+</head>
+<body class="body">
+  <div class="background-img"></div>
+  <div class="container">
+    <!-- Header section - Title and theme icon -->
+    <header>
+      <div class="title-section">
+        <h1>TODO</h1>
+        <img class="icon-theme" src="images/icon-moon.svg" alt="">
+      </div>
+      <div class="input-section">
+        <div class="checkbox"></div>
+        <input class="input-field" type="text" placeholder="Create a new todo...">
+      </div>
+    </header>
+
+    <!-- The todo list -->
+    <div class="todo-section">
+      <div class="todo-element">
+        <div class="checkbox checked"><img src="images/icon-check.svg" alt=""></div>
+        <p>10 minutes meditation</p>
+        <div class="deleteTask"><img src="images/icon-cross.svg" alt=""></div>
+      </div>
+
+      <div class="todo-element">
+        <div class="checkbox"></div>
+        <p>10 minutes sport</p>
+        <div class="deleteTask"><img src="images/icon-cross.svg" alt=""></div>
+      </div>
+
+      <div class="todo-element">
+        <div class="checkbox"></div>
+        <p>10 minutes lecture</p>
+        <div class="deleteTask"><img src="images/icon-cross.svg" alt=""></div>
+      </div>
+
+      <div class="todo-element">
+        <div class="checkbox"></div>
+        <p>10 minutes sport</p>
+        <div class="deleteTask"><img src="images/icon-cross.svg" alt=""></div>
+      </div>
+
+      <div class="todo-element">
+        <div class="checkbox"></div>
+        <p>10 minutes lecture</p>
+        <div class="deleteTask"><img src="images/icon-cross.svg" alt=""></div>
+      </div>
+
+      <!-- Bottom of the todo list - Action part -->
+    <div class="todo-section-bottom">
+      <div class="bottom-left-items">
+        3 items left
+      </div>
+
+      <ul class="bottom-filter">
+        <li>All</li>
+        <li>Active</li>
+        <li>Completed</li>
+      </ul>
+
+      <div class="bottom-clear-completed">
+        Clear Completed
+      </div>
+    </div>
+    </div>
+
+    <div class="drag-drop-message">
+    Drag and drop to reorder list
+  </div>
+  </div>
+
+  
+
+  <script src="todo-list-app.js"></script>
+</body>
+</html>

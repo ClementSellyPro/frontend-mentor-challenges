@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Josefin', sans-serif;
+    height: 100vh;
+    position: relative;
+    background-color: #fafafa;
+    color: hsl(235, 19%, 35%);
+}
+.background-img{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 350px;
+    background-image: url('images/bg-desktop-light.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+.container{
+    max-width: 550px;
+    width: 80%;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+/* --------------- HEADER SECTION --------------- */
+header{
+    width: 100%;
+    height: 150px;
+    margin-top: 20%;
+}
+/* TITLE SECTION */
+.title-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 30px;
+}
+h1{
+    color: white;
+    letter-spacing: 0.4em;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+.title-section img{
+    width: 25px;
+    height: 25px;
+}
+.title-section img:hover{
+    cursor: pointer;
+}
+/* INPUT SECTION */
+.input-section{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    background-color: white;
+}
+.checkbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid hsl(234, 39%, 85%);
+}
+.checkbox:hover{
+    cursor: pointer;
+    border: 2px solid hsl(209, 80%, 79%);
+}
+.checked{ 
+    background: rgb(75,150,224);
+    background: linear-gradient(90deg, rgb(119, 185, 252) 0%, rgb(190, 110, 239) 99%); 
+}
+.input-field{
+    width: 88%;
+    height: 100%;
+    border: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+.input-field:focus{
+    outline: none;
+}
+
+/* --------------- TODO LIST SECTION --------------- */
+.todo-section{
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 15px 20px 40px 0px rgba(0,0,0,0.1);
+}
+.todo-element{
+    display: flex;
+    align-items: center;
+    padding: 15px 0px;
+    border-bottom: 1px solid hsl(234, 39%, 85%);
+    position: relative;
+}
+.deleteTask{
+    position: absolute;
+    right: 5%;
+    opacity: 0;
+    cursor: pointer;
+    transition: all  0.2s;
+}
+.todo-element:hover .deleteTask{
+    opacity: 1;
+}
+
+
+/* --------------- BOTTOM SECTION --------------- */
+.todo-section-bottom{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: 20px;
+    color: hsl(236, 9%, 61%);
+}
+.bottom-left-items{
+    font-weight: 500;
+}
+.bottom-filter{
+    display: flex;
+    justify-content: space-between;
+    width: 180px;
+}
+.bottom-filter li{
+    list-style: none;
+}
+.bottom-filter li:hover{
+    cursor: pointer;
+    color: hsl(235, 19%, 35%);
+}
+.bottom-clear-completed{
+    font-weight: 500;
+}
+.bottom-clear-completed{
+    cursor: pointer;
+    color: hsl(235, 19%, 35%);
+}
+
+/* Drag and drop message */
+.drag-drop-message{
+    position: absolute;
+    bottom: 8%;
+    color: hsl(236, 9%, 61%);
+}
+
+
+@media only screen and (max-width: 700px) {
+    .container{
+        width: 80%;
+    }
+    .todo-section-bottom{
+        position: relative;
+    }
+    .bottom-filter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+        position: absolute;
+        left: 0px;
+        top: 80px;
+        height: 50px;
+        width: 100%;
+        border-radius: 5px;
+        background-color: white;
+    }
+}
