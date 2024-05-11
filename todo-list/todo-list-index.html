@@ -7,11 +7,17 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
   <title>Frontend Mentor | Todo app</title>
-
+  <script src="https://kit.fontawesome.com/749ee16879.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="todo-list-style.css">
 </head>
-<body class="dark">
+<body class="">
   <div class="background-img"></div>
+  <!-- button to go back to the home page -->
+  <div class="back-home">
+    <a href="../index.html">
+        <img src="../images/icon/accueil.png" alt="Home icon">
+    </a>
+  </div>
   <div class="container">
     <!-- Header section - Title and theme icon -->
     <header>
@@ -19,9 +25,11 @@
         <h1>TODO</h1>
         <img class="icon-theme" src="images/icon-moon.svg" alt="">
       </div>
+      <!-- Input field -->
       <div class="input-section">
         <div class="checkbox"></div>
         <input class="input-field" type="text" placeholder="Create a new todo...">
+        <i class="fa-solid fa-circle-plus add-icon"></i>
       </div>
     </header>
 

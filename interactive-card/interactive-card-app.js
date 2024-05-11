@@ -58,13 +58,13 @@ cvcInput.addEventListener('keyup', (e) => {
 
 
 validateBtn.addEventListener('click', () => {
+    formSection.classList.add('hide');
+    validationSection.classList.remove('hide');
     nameInput.value = '';
     numberInput.value = '';
     monthInput.value = '';
     yearInput.value = '';
     cvcInput.value = '';
-    formSection.classList.add('hide');
-    validationSection.classList.remove('hide');
 });
 
 continueBtn.addEventListener('click', () => {

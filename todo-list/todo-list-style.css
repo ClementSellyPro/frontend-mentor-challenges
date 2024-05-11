@@ -22,6 +22,27 @@
     margin: 0;
     padding: 0;
 }
+/* Style button home page */
+.back-home{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    background-color: white;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.back-home:hover a img{
+    width: 45px;
+}
+.back-home a img{
+    width: 40px;
+    transition: all 0.2s;
+}
 
 body{
     font-family: 'Josefin', sans-serif;
@@ -85,6 +106,9 @@ h1{
     border-radius: 5px;
     background-color: var(--bg-items);
 }
+.input-section .checkbox{
+    width: 22px;
+}
 .checkbox{
     display: flex;
     justify-content: center;
@@ -116,6 +140,13 @@ h1{
 }
 .input-field:focus{
     outline: none;
+}
+.add-icon{
+    padding-right: 15px;
+    font-size: 1.5em;
+}
+.add-icon:hover{
+    cursor: pointer;
 }
 
 /* --------------- TODO LIST SECTION --------------- */
@@ -184,16 +215,33 @@ h1{
 /* Drag and drop message */
 .drag-drop-message{
     position: absolute;
-    bottom: 8%;
+    bottom: 5%;
     color: var(--second-color);
 }
 
 
 @media only screen and (max-width: 700px) {
+    .back-home{
+        top: 2%;
+        left: 2%;
+        width: 50px;
+        height: 50px;
+    }
+    .back-home:hover a img{
+        width: 25px;
+    }
+    .back-home a img{
+        width: 20px;
+        transition: all 0.2s;
+    }
+
     .container{
         width: 80%;
     }
     
+    .input-section .checkbox{
+        width: 25px;
+    }
     .todo-list{
         max-height: 350px;
     }

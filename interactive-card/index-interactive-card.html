@@ -55,8 +55,8 @@
       <div class="form-bottomSection">
         <div class="dateSection">
           <label for="dateExpiration">EXP. DATE (MM/YY)</label><br>
-          <input type="numeric" placeholder="MM" id="dateExpiration" maxlength="2" required>
-          <input type="numeric" placeholder="YY" id="dateExpiration-year" maxlength="2" required>
+          <input type="number" placeholder="MM" id="dateExpiration" maxlength="2" min="01" max="12" required>
+          <input type="number" placeholder="YY" id="dateExpiration-year" maxlength="2" required>
         </div>
         <div class="cvcSection">
           <label for="cvc">CVC</label><br>
