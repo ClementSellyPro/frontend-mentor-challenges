@@ -17,7 +17,8 @@ let playAgainBtn = document.querySelector('.replay-btn');
 
 let opponentArray = ['rock', 'paper', 'scissors'];
 let myPicked = '';
-let opponentPicked = '';
+// let opponentPicked = '';
+let opponentPicked = [];
 let score = 0;
 
 
@@ -62,19 +63,19 @@ function addMyPickedToOpponentPage(){
 function opponentSelection(){
     let random = Math.floor(Math.random() * 3);
     
-    opponentPicked = opponentArray[random];
+    opponentPicked.push(opponentArray[random]);
     
     let circlePicked = document.createElement('div');
     circlePicked.setAttribute('class', 'circle house-picked');
 
     circlePicked.innerHTML = `
         <h2>THE HOUSE PICKED</h2>
-        <div class="circle-color ${opponentPicked}-color">
-            <img src="images/icon-${opponentPicked}.svg" alt="Icon ${opponentPicked}">
+        <div class="circle-color ${opponentPicked[0]}-color">
+            <img src="images/icon-${opponentPicked[0]}.svg" alt="Icon ${opponentPicked[0]}">
         </div>`;
 
     opponentSelectionPage.appendChild(circlePicked);
-    console.log(`inside ${opponentPicked}`);
+    console.log(`inside ${opponentPicked[0]}`);
 }
 
 // Display the result page
@@ -90,8 +91,8 @@ function displaySelectionOnResultPage(){
     </div>
     `
     resultPageOpponentPicked = `
-    <div class="circle-color ${opponentPicked}-color">
-        <img src="images/icon-${opponentPicked}.svg" alt="Icon ${opponentPicked}">
+    <div class="circle-color ${opponentPicked[0]}-color">
+        <img src="images/icon-${opponentPicked[0]}.svg" alt="Icon ${opponentPicked[0]}">
     </div>
     `
     
@@ -100,12 +101,12 @@ function displaySelectionOnResultPage(){
 // Get the result and display a message if the user Win or Lose
 function gettingResult(){
     resultMessage.innerHTML = '';
-    if(myPicked === opponentPicked){
+    if(myPicked === opponentPicked[0]){
         resultMessage.innerHTML = 'DRAW';
     }else{
-        if((myPicked === 'paper' && opponentPicked === 'scissors') || 
-            (myPicked === 'scissors' && opponentPicked === 'rock') ||
-            (myPicked === 'rock' && opponentPicked === 'paper')){
+        if((myPicked === 'paper' && opponentPicked[0] === 'scissors') || 
+            (myPicked === 'scissors' && opponentPicked[0] === 'rock') ||
+            (myPicked === 'rock' && opponentPicked[0] === 'paper')){
             resultMessage.innerHTML = 'YOU LOSE';
             if(score > 0){
                 score--;
@@ -117,7 +118,7 @@ function gettingResult(){
     }
     
     console.log(`my picked : ${myPicked}`);
-    console.log(`house picked : ${opponentPicked}`);
+    console.log(`house picked : ${opponentPicked[0]}`);
 }
 
 function displayResult(){
@@ -142,6 +143,6 @@ function playAgain(){
 // Event for the "Play Again" button, executing the playAgain() function to reinitilisate the page 
 playAgainBtn.addEventListener('click', () => {
     playAgain();
-    opponentPicked = '';
+    opponentPicked = [];
     myPicked = '';
 });
