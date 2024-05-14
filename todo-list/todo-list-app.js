@@ -1,6 +1,6 @@
 /* --------------- VARIABLES INITIALIZATION --------------- */
 let taskList = ['Manger', 'Boire', 'Lire des lives'];
-
+let taskListCompleted = [];
 // 'Manger', 'Boire', 'Lire des lives'
 
 
@@ -12,7 +12,7 @@ let input = document.querySelector('.input-field')
 let addBtn = document.querySelector('.add-icon');
 
 let todoListDOM = document.querySelector('.todo-list');
-let allTaskElement = [todoListDOM.querySelectorAll('.todo-element')];
+let allTaskElement = todoListDOM.querySelectorAll('.todo-element');
 
 
 /* ---------------         FUNCTIONS        --------------- */
@@ -41,21 +41,48 @@ function displayTaskList(){
     todoListDOM.innerHTML = '';
     for(let i = 0; i < taskList.length; i++){
         let todoElement = document.createElement('div');
-        todoElement.setAttribute('class', 'todo-element');
+        todoElement.setAttribute('class', `todo-element`);
+        todoElement.setAttribute('data-id', `${i}`);
 
         // let checkbox = document.createElement('div');
         // checkbox.setAttribute('class', 'checkbox');
         todoElement.innerHTML = `
             <div class="checkbox"></div> 
             <p> ${taskList[i]} </p>
-            <div class="deleteTask"><img src="images/icon-cross.svg" alt=""></div>
+            <div class="deleteTask"><img class='delete-icon' src="images/icon-cross.svg" alt=""></div>
         `
         todoListDOM.appendChild(todoElement);
     }
 }
 // remove a task from the list
-function removeTask(){
-    console.log('yes');
+function removeTask(target){
+    if(target.classList.contains('delete-icon')){
+        let elementTarget = target.parentElement.parentElement;
+        let idElement = elementTarget.getAttribute('data-id')
+        taskList.splice(idElement, 1);
+        updateDisplay()
+    }
+    
+}
+// mark a task as completed or not
+function markAsCompleted(target){
+    let idElement = target.parentElement.getAttribute('data-id');
+    if(target.parentElement.classList.contains('checked')){
+        target.parentElement.classList.remove('checked');
+        target.parentElement.innerHTML = '';
+        taskListCompleted.pop(taskList[idElement]);
+    }
+    if(target.classList.contains('checked')){
+        target.classList.remove('checked');
+        target.innerHTML = '';
+        taskListCompleted.pop(taskList[idElement]);
+    }
+    if(target.classList.contains('checkbox')){
+        target.classList.add('checked');
+        target.innerHTML = '<img src="images/icon-check.svg" alt=""></img>';
+        taskListCompleted.push(taskList[idElement]);
+    }
+    console.log(taskListCompleted);
 }
 // update the display function
 function updateDisplay(){
@@ -65,6 +92,19 @@ function updateDisplay(){
     }
     //refresh the array of task
     allTaskElement = document.querySelectorAll('.todo-element');
+    //event click on element
+    elementOnClick(allTaskElement);
+}
+
+// element onClick actions (mark completed, remove)
+function elementOnClick(list){
+    for(let i = 0; i < list.length; i++){
+        list[i].addEventListener('click', (e) => {
+            let target = e.target;
+            markAsCompleted(target);
+            removeTask(target);
+        });
+    }
 }
 
 /* ---------------         EVENTS         --------------- */
