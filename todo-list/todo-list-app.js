@@ -1,19 +1,25 @@
 /* --------------- VARIABLES INITIALIZATION --------------- */
-let taskList = ['Manger', 'Boire', 'Lire des lives'];
+let taskList = [];
 let taskListCompleted = [];
-// 'Manger', 'Boire', 'Lire des lives'
+let taskListBackUp = [];
+// 'Manger', 'Boire', 'Lire des lives', 'Assise'
 
 
 /* --------------- DOM ELEMENT SELECTIONS --------------- */
 let body = document.querySelector('body');
+// header element
 let themeBtn = document.querySelector('.icon-theme');
-
 let input = document.querySelector('.input-field')
 let addBtn = document.querySelector('.add-icon');
-
+// todo-section element
 let todoListDOM = document.querySelector('.todo-list');
 let allTaskElement = todoListDOM.querySelectorAll('.todo-element');
-
+//bottom buttons element
+let clearComletedBtn = document.querySelector('.bottom-clear-completed');
+let allTaskBtn = document.querySelector('.bottom-filter-all');
+let activeTaskBtn = document.querySelector('.bottom-filter-active');
+let completedTaskBtn = document.querySelector('.bottom-filter-completed');
+let numberTaskLeft = document.querySelector('.bottom-left-items span');
 
 /* ---------------         FUNCTIONS        --------------- */
 function noTaskMessage(){
@@ -44,23 +50,33 @@ function displayTaskList(){
         todoElement.setAttribute('class', `todo-element`);
         todoElement.setAttribute('data-id', `${i}`);
 
-        // let checkbox = document.createElement('div');
-        // checkbox.setAttribute('class', 'checkbox');
-        todoElement.innerHTML = `
+        if(taskListCompleted.includes(taskList[i])){
+            todoElement.innerHTML = `
+            <div class="checkbox checked"><img src="images/icon-check.svg" alt=""></div> 
+            <p> ${taskList[i]} </p>
+            <div class="deleteTask"><img class='delete-icon' src="images/icon-cross.svg" alt=""></div>
+            `
+        }else{
+            todoElement.innerHTML = `
             <div class="checkbox"></div> 
             <p> ${taskList[i]} </p>
             <div class="deleteTask"><img class='delete-icon' src="images/icon-cross.svg" alt=""></div>
-        `
+            `
+        }
+        
         todoListDOM.appendChild(todoElement);
     }
 }
 // remove a task from the list
 function removeTask(target){
     if(target.classList.contains('delete-icon')){
-        let elementTarget = target.parentElement.parentElement;
-        let idElement = elementTarget.getAttribute('data-id')
-        taskList.splice(idElement, 1);
-        updateDisplay()
+        if(confirm('Are you sure to delete this task?')){
+            let elementTarget = target.parentElement.parentElement;
+            let idElement = elementTarget.getAttribute('data-id')
+            taskList.splice(idElement, 1);
+            updateDisplay()
+        }
+        
     }
     
 }
@@ -82,7 +98,8 @@ function markAsCompleted(target){
         target.innerHTML = '<img src="images/icon-check.svg" alt=""></img>';
         taskListCompleted.push(taskList[idElement]);
     }
-    console.log(taskListCompleted);
+    ////////////////////////////////////////////////////////////////////////////
+    console.log(`Les tasks complleted : ${taskListCompleted}`);
 }
 // update the display function
 function updateDisplay(){
@@ -94,6 +111,7 @@ function updateDisplay(){
     allTaskElement = document.querySelectorAll('.todo-element');
     //event click on element
     elementOnClick(allTaskElement);
+    numberTaskLeft.innerHTML = taskList.length;
 }
 
 // element onClick actions (mark completed, remove)
@@ -129,7 +147,65 @@ input.addEventListener('keypress', (event) => {
         updateDisplay();
     }
 })
-
+/* --- bottom buttons --- */ 
+// clear completed tasks
+clearComletedBtn.addEventListener('click', () => {
+    taskList = taskList.filter((task) => {
+        return !taskListCompleted.includes(task);
+    });
+    // taskListCompleted.filter((task) => {
+    //     return taskList.includes(task);
+    // });
+    taskListCompleted = [];
+    taskListBackUp = taskList;
+    updateDisplay();
+    console.log('----------------------------------------------------');
+    console.log(`Task List after clear-btn ${taskList}`);
+    console.log(`BACK UP after clear-btn ${taskListBackUp}`);
+    console.log(`Task completed after clear-btn ${taskListCompleted}`);
+});
+// disable filter to display all tasks, completed and active
+allTaskBtn.addEventListener('click', () => {
+    if(taskListBackUp.length > 0){
+        taskList = taskListBackUp;
+        updateDisplay();
+    }
+    updateDisplay();
+    console.log('----------------------------------------------------');
+    console.log(`Task List after all-btn ${taskList}`);
+    console.log(`BACK UP after all-btn ${taskListBackUp}`);
+    console.log(`Task completed after all-btn ${taskListCompleted}`);
+});
+// filter to display only active tasks
+activeTaskBtn.addEventListener('click', () => {
+    if(taskListBackUp.length > 0){
+        taskList = taskListBackUp;
+    }
+    taskListBackUp = taskList;
+    taskList = taskList.filter((task) => {
+        return !taskListCompleted.includes(task);
+    });
+    updateDisplay();
+    console.log('----------------------------------------------------');
+    console.log(`Task List after active-btn ${taskList}`);
+    console.log(`BACK UP after active-btn ${taskListBackUp}`);
+    console.log(`Task completed after active-btn ${taskListCompleted}`);
+});
+// filter to display only completed tasks 
+completedTaskBtn.addEventListener('click', () => {
+    if(taskListBackUp.length > 0){
+        taskList = taskListBackUp;
+    }
+    taskListBackUp = taskList;
+    taskList = taskList.filter((task) => {
+        return taskListCompleted.includes(task);
+    });
+    updateDisplay();
+    console.log('----------------------------------------------------');
+    console.log(`Task List after completed-btn ${taskList}`);
+    console.log(`BACK UP after completed-btn ${taskListBackUp}`);
+    console.log(`Task completed complete all-btn ${taskListCompleted}`);
+});
 
 
 window.addEventListener('load', () => updateDisplay());
