@@ -2,8 +2,11 @@
 let taskList = [];
 let taskListCompleted = [];
 let taskListBackUp = [];
-// 'Manger', 'Boire', 'Lire des lives', 'Assise'
-
+// check the local storage to retrieve data
+let actualStorage = localStorage.getItem('taskList')
+if(actualStorage !== null){
+    taskList = JSON.parse(localStorage.getItem('taskList', taskList));
+}
 
 /* --------------- DOM ELEMENT SELECTIONS --------------- */
 let body = document.querySelector('body');
@@ -20,8 +23,10 @@ let allTaskBtn = document.querySelector('.bottom-filter-all');
 let activeTaskBtn = document.querySelector('.bottom-filter-active');
 let completedTaskBtn = document.querySelector('.bottom-filter-completed');
 let numberTaskLeft = document.querySelector('.bottom-left-items span');
+// button to clear local storage
+let btnClearStorage = document.querySelector('.clear-storage')
 
-/* ---------------         FUNCTIONS        --------------- */
+/* ---------------        FUNCTIONS      --------------- */
 function noTaskMessage(){
     todoListDOM.innerHTML = '';
     if(taskList.length === 0){
@@ -41,6 +46,8 @@ function addNewTask(){
     }
     //reset input field
     input.value = '';
+    // update local storage after adding a task
+    localStorage.setItem('taskList', JSON.stringify(taskList));
 }
 // display all task on the list
 function displayTaskList(){
@@ -76,9 +83,9 @@ function removeTask(target){
             taskList.splice(idElement, 1);
             updateDisplay()
         }
-        
     }
-    
+    // update local storage after remove a task
+    localStorage.setItem('taskList', JSON.stringify(taskList));
 }
 // mark a task as completed or not
 function markAsCompleted(target){
@@ -98,10 +105,8 @@ function markAsCompleted(target){
         target.innerHTML = '<img src="images/icon-check.svg" alt=""></img>';
         taskListCompleted.push(taskList[idElement]);
     }
-    ////////////////////////////////////////////////////////////////////////////
-    console.log(`Les tasks complleted : ${taskListCompleted}`);
 }
-// update the display function
+////////// update display //////////
 function updateDisplay(){
     noTaskMessage();
     if(taskList.length > 0){
@@ -147,22 +152,18 @@ input.addEventListener('keypress', (event) => {
         updateDisplay();
     }
 })
+
 /* --- bottom buttons --- */ 
 // clear completed tasks
 clearComletedBtn.addEventListener('click', () => {
     taskList = taskList.filter((task) => {
         return !taskListCompleted.includes(task);
     });
-    // taskListCompleted.filter((task) => {
-    //     return taskList.includes(task);
-    // });
     taskListCompleted = [];
     taskListBackUp = taskList;
+    //update local storage after clearing the completed tasks
+    localStorage.setItem('taskList', JSON.stringify(taskList));
     updateDisplay();
-    console.log('----------------------------------------------------');
-    console.log(`Task List after clear-btn ${taskList}`);
-    console.log(`BACK UP after clear-btn ${taskListBackUp}`);
-    console.log(`Task completed after clear-btn ${taskListCompleted}`);
 });
 // disable filter to display all tasks, completed and active
 allTaskBtn.addEventListener('click', () => {
@@ -171,10 +172,6 @@ allTaskBtn.addEventListener('click', () => {
         updateDisplay();
     }
     updateDisplay();
-    console.log('----------------------------------------------------');
-    console.log(`Task List after all-btn ${taskList}`);
-    console.log(`BACK UP after all-btn ${taskListBackUp}`);
-    console.log(`Task completed after all-btn ${taskListCompleted}`);
 });
 // filter to display only active tasks
 activeTaskBtn.addEventListener('click', () => {
@@ -186,10 +183,6 @@ activeTaskBtn.addEventListener('click', () => {
         return !taskListCompleted.includes(task);
     });
     updateDisplay();
-    console.log('----------------------------------------------------');
-    console.log(`Task List after active-btn ${taskList}`);
-    console.log(`BACK UP after active-btn ${taskListBackUp}`);
-    console.log(`Task completed after active-btn ${taskListCompleted}`);
 });
 // filter to display only completed tasks 
 completedTaskBtn.addEventListener('click', () => {
@@ -201,11 +194,14 @@ completedTaskBtn.addEventListener('click', () => {
         return taskListCompleted.includes(task);
     });
     updateDisplay();
-    console.log('----------------------------------------------------');
-    console.log(`Task List after completed-btn ${taskList}`);
-    console.log(`BACK UP after completed-btn ${taskListBackUp}`);
-    console.log(`Task completed complete all-btn ${taskListCompleted}`);
 });
 
 
-window.addEventListener('load', () => updateDisplay());
+window.addEventListener('load', () => {
+    updateDisplay();
+});
+
+btnClearStorage.addEventListener('click', () => {
+    localStorage.clear();
+    location.reload();
+});

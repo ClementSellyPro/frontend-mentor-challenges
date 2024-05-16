@@ -233,6 +233,23 @@ h1{
     bottom: 5%;
     color: var(--second-color);
 }
+/* Clear Storage button */
+.clear-storage{
+    position: absolute;
+    right: 50px;
+    bottom: 5%;
+    background-color: rgb(253, 45, 87);
+    color: black;
+    border: none;
+    height: 20px;
+    width: 100px;
+    border-radius: 5px;
+}
+.clear-storage:hover{
+    cursor: pointer;
+    background-color: crimson;
+    color: white;
+}
 
 
 @media only screen and (max-width: 700px) {
