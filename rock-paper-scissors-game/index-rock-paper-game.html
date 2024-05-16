@@ -25,13 +25,14 @@
                 <span class="score-title">score</span>
                 <span class="score-number">0</span>
             </div>
+            <button class="reset-score" type="button">Reset Score</button>
         </header>
-
+<!-- 
         <div class="lineSection">
             <div class="lineTop"></div>
             <div class="lineLeft"></div>
             <div class="lineRight"></div>
-        </div>
+        </div> -->
 
         <!-- PAGE SELECTION -->
         <div class="selection-section">
@@ -83,10 +84,21 @@
                     <img src="images/icon-scissors.svg" alt="Icon Scissors">
                 </div> -->
             </div>
+            
         </div>
 
-        <button class="rules-btn" type="button">RULES</button>
 
+        <div class="rules-btn-box">
+            <button class="rules-btn" type="button">RULES</button>
+        </div>
+
+    </div>
+    <div class="rules-modal hide">
+        <div class="rules-modal-container">
+            <h1>RULES</h1>
+            <img class="rules-modal-img" src="images/image-rules.svg" alt="Rules images">
+            <img class="rules-modal-close" src="images/icon-close.svg" alt="Close button">
+        </div>
     </div>
     <script src="rock-paper-game-app.js"></script>
 </body>

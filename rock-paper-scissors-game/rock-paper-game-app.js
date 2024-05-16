@@ -8,34 +8,40 @@ let opponentSelectionPage = document.querySelector('.opponent-section');
 let resultPage =  document.querySelector('.result');
 let resultPageMyPicked = document.querySelector('.result .my-picked');
 let resultPageOpponentPicked = document.querySelector('.result .house-picked');
+let rulesModal = document.querySelector('.rules-modal');
 
 let resultMessage = document.querySelector('.result-message-text');
 let scoreDisplay = document.querySelector('.score-number');
 let playAgainBtn = document.querySelector('.replay-btn');
+let rulesBtn = document.querySelector('.rules-btn');
+let closeRulesBtn = document.querySelector('.rules-modal-close');
+let resetScoreBtn = document.querySelector('.reset-score');
 
-/* ---------- INITIALISATION VARIABLES ---------- */
+/* -------------------- INITIALISATION VARIABLES ---------- */
 
 let opponentArray = ['rock', 'paper', 'scissors'];
 let myPicked = '';
-// let opponentPicked = '';
 let opponentPicked = [];
 let score = 0;
+let currentStorage = localStorage.getItem('score');
+if(currentStorage !== null){
+    score = currentStorage;
+}
 
-
-/* ---------- FUNCTIONS      ---------- */
+/* -------------------- FUNCTIONS      -------------------- */
 function getPicked(selection){
     myPicked = selection;
     changeDisplayStepTwo();
     addMyPickedToOpponentPage();
-    setTimeout(() => {
-        opponentSelection()}, "1000"
-    );
+    opponentSelection();
+    console.log(opponentPicked[0]);
     setTimeout(() => {
         changeDisplayStepThree()}, "3000"
     );
-    displaySelectionOnResultPage();
-    gettingResult();
+    displaySelectionOnResultPage(opponentPicked[0]);
+    gettingResult(opponentPicked[0]);
     updateScore();
+    localStorage.setItem('score', score);
 }
 
 // Change the display after user selection
@@ -75,7 +81,6 @@ function opponentSelection(){
         </div>`;
 
     opponentSelectionPage.appendChild(circlePicked);
-    console.log(`inside ${opponentPicked[0]}`);
 }
 
 // Display the result page
@@ -84,53 +89,40 @@ function changeDisplayStepThree(){
     resultPage.classList.remove('hide');
 }
 
-function displaySelectionOnResultPage(){
+function displaySelectionOnResultPage(opponent){
     resultPageMyPicked.innerHTML = `
     <div class="circle-color ${myPicked}-color">
         <img src="images/icon-${myPicked}.svg" alt="Icon ${myPicked}">
     </div>
     `
-    resultPageOpponentPicked = `
-    <div class="circle-color ${opponentPicked[0]}-color">
-        <img src="images/icon-${opponentPicked[0]}.svg" alt="Icon ${opponentPicked[0]}">
+    resultPageOpponentPicked.innerHTML = `
+    <div class="circle-color ${opponent}-color">
+        <img src="images/icon-${opponent}.svg" alt="Icon ${opponent}">
     </div>
     `
-    
 }
 
 // Get the result and display a message if the user Win or Lose
-function gettingResult(){
+function gettingResult(opponent){
     resultMessage.innerHTML = '';
-    if(myPicked === opponentPicked[0]){
+    if(myPicked === opponent){
         resultMessage.innerHTML = 'DRAW';
     }else{
-        if((myPicked === 'paper' && opponentPicked[0] === 'scissors') || 
-            (myPicked === 'scissors' && opponentPicked[0] === 'rock') ||
-            (myPicked === 'rock' && opponentPicked[0] === 'paper')){
+        if((myPicked === 'paper' && opponent === 'scissors') || 
+            (myPicked === 'scissors' && opponent === 'rock') ||
+            (myPicked === 'rock' && opponent === 'paper')){
             resultMessage.innerHTML = 'YOU LOSE';
-            if(score > 0){
-                score--;
-            }
         }else{
-            resultMessage.innerHTML = 'YOU YOU'; //WIN
+            resultMessage.innerHTML = 'YOU WIN'; //WIN
             score++;
         }
     }
-    
-    console.log(`my picked : ${myPicked}`);
-    console.log(`house picked : ${opponentPicked[0]}`);
 }
 
-function displayResult(){
-    // <div class="result-message">
-    //     <!-- <h1>YOU WIN</h1> -->
-    //     <button class="replay-btn" type="button"> PLAY AGAIN</button>
-    // </div>
-}
 
 // Update the score displayed according to the result
 function updateScore(){
-    scoreDisplay = '';
+    scoreDisplay.innerHTML = '';
     scoreDisplay.innerHTML = String(score);
 }
 
@@ -138,6 +130,7 @@ function updateScore(){
 function playAgain(){
     resultPage.classList.add('hide');
     selectionPage.classList.remove('hide');
+    updateScore();
 }
 
 // Event for the "Play Again" button, executing the playAgain() function to reinitilisate the page 
@@ -146,3 +139,38 @@ playAgainBtn.addEventListener('click', () => {
     opponentPicked = [];
     myPicked = '';
 });
+
+// Reset the score
+resetScoreBtn.addEventListener('click', () => {
+    localStorage.clear();
+    location.reload();
+});
+
+
+// Display the rules
+// rulesBtn.addEventListener('click', () => {
+//     console.log('yes');
+//     rulesModal.classList.remove('hide');
+// });
+closeRulesBtn.addEventListener('click', () => {
+    rulesModal.classList.add('hide');
+});
+
+window.addEventListener('click', (event) => {
+    console.log(event.target.className);
+    if(event.target.className === 'rules-btn'){
+        rulesModal.classList.remove('hide');
+    }else if(!rulesModal.classList.contains('hide')){
+        if(event.target.className !== 'rules-modal-img' && 
+        event.target.className !== 'rules-modal-container' && 
+        event.target.className !== ''){
+            rulesModal.classList.add('hide');
+        }
+    }
+});
+
+
+
+window.onload = () => {
+    updateScore();
+};
