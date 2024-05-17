@@ -1,4 +1,5 @@
 <!-- Button to go back home -->
+
 <div class="back-home">
     <a href="../index.html">
         <img src="../images/icon/accueil.png" alt="Home icon">
@@ -8,6 +9,7 @@
 
 
 /* Button to go bak home */
+
 .back-home{
     position: absolute;
     top: 5%;

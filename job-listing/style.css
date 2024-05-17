@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+:root{
+    --main-bg-color: hsl(180, 52%, 96%);
+    --bg-tags: hsl(180, 31%, 95%);
+    --light-text-color: hsl(180, 8%, 52%);
+    --text-color: hsl(180, 29%, 50%);
+    --dark: hsl(180, 14%, 20%);
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+/* Button to go bak home */
+.back-home{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    background-color: white;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.back-home:hover a img{
+    width: 45px;
+}
+.back-home a img{
+    width: 40px;
+    transition: all 0.2s;
+}
+
+
+body{
+    background-color: var(--main-bg-color);
+    font-family: "League Spartan", sans-serif;
+    width: 100%;
+    height: 100vh;
+}
+header{
+    background-image: url('images/bg-header-desktop.svg');
+    background-color: var(--text-color);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 20%;
+}
+.container{
+    width: 85%;
+    min-width: 700px;
+    margin: 10% auto;
+}
+/* --------------- JOB LIST --------------- */
+.job-list{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+/* ---------- JOB ELEMENT ---------- */
+.element{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    padding: 30px;
+    margin-bottom: 50px;
+}
+/* Left Section */
+.left-section{
+    display: flex;
+    padding-left: 10px;
+}
+/* Logo section */
+.logo-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Detail section */
+.details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 20px;
+    width: 280px;
+}
+.details-company{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.company-name{
+    color: var(--text-color);
+    font-size: 1.2em;
+}
+.tag-news{
+    background-color: var(--text-color);
+    color: var(--main-bg-color);
+    border-radius: 20px;
+    padding: 1px 8px;
+}
+.job-title{
+    color: var(--dark);
+    font-size: 1.4em;
+}
+.details-job{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+.details-job span{
+    color: var(--light-text-color);
+    position: relative;
+}
+.details-job span::before{
+    position: absolute;
+    top: 7px;
+    left: -20px;
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--light-text-color);
+}
+.details-job span:first-child::before{
+    display: none;
+}
+/* Tags section */
+.tags-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+.tag-element{
+    background-color: var(--bg-tags);
+    color: var(--text-color);
+    font-size: 0.8em;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 5px;
+}
+/* hover */
+.logo-img:hover, .company-name:hover, .tag-element:hover, .job-title:hover{
+    cursor: pointer;
+}
+
+.hide{
+    display: none;
+}
+
+/* ---------------------------------------------------------------------------------- */
+@media only screen and (max-width:780px){
+    header{
+        background-image: url('images/bg-header-mobile.svg');
+    }
+    .container{
+        min-width: 100%;
+        margin: 25% auto;
+    }
+    .left-section{
+        flex-direction: column;
+        padding-left: 0px;
+        height: 140px;
+    }
+    .job-list{
+        width: 80%;
+        margin: auto;
+    }
+    .element{
+        position: relative;
+        flex-direction: column;
+        width: 80%;
+        height: 35%;
+    }
+    .details{
+        height: 100%;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding: 20px 0px;
+        border-bottom: 1px solid black;
+    }
+    .logo-img img{
+        position: absolute;
+        left: 30px;
+        top: -25px;
+        width: 50px;
+    }
+    .company-name{
+        font-size: 1em;
+    }
+    .job-title{
+        font-size: 1.2em;
+    }
+    .details-job{
+        display: flex;
+        justify-content: space-between;
+        width: 250px;
+    }
+
+    .tags-list{
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    .tag-element{
+        font-size: 1em;
+        font-weight: 600;
+        padding: 10px;
+    }
+}
