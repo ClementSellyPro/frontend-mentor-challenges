@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "libs/mixin.scss";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "Kumbh", sans-serif;
+    background-color: #ccc;
+}
