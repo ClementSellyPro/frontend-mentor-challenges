@@ -10,26 +10,73 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
+    <!-- header section -->
+    <header>
+      <div class="logo-hamburger-section">
+        <img class="hamburger" src="images/icon-menu.svg" alt="">
+        <img class="logo" src="images/logo.svg" alt="">
+      </div>
 
-  Collections
-  Men
-  Women
-  About
-  Contact
+      <nav class="hidden">
+        <img class="btn-close" src="images/icon-close.svg" alt="">
+        <ul class="links-list">
+          <li>Collections</li>
+          <li>Men</li>
+          <li>Women</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+  
+      <div class="profile-cart-section">
+        <img class="profile-cart" src="images/icon-cart.svg" alt="">
+        <img class="profile-avatar" src="images/image-avatar.png" alt="">
+      </div>
+    </header>
 
-  Sneaker Company
+    <!-- content section -->
+    <div class="content">
+      <div class="images-section">
+        <div class="main-image-section">
+          <div class="icon-previous-box"><img class="icon-previous" src="images/icon-previous.svg" alt=""></div>
+          <img class="main-image" src="images/image-product-1.jpg" alt="">
+          <div class="icon-next-box"><img class="icon-next" src="images/icon-next.svg" alt=""></div>
+        </div>
+        <ul class="images-list">
+          <li><img src="images/image-product-1-thumbnail.jpg" alt=""></li>
+          <li><img src="images/image-product-2-thumbnail.jpg" alt=""></li>
+          <li><img src="images/image-product-3-thumbnail.jpg" alt=""></li>
+          <li><img src="images/image-product-4-thumbnail.jpg" alt=""></li>
+        </ul>
+      </div>
 
-  Fall Limited Edition Sneakers
+      <div class="information-section">
+        <h2 class="brand-name">SNEAKER COMPANY</h2>
+        <h1 class="item-name">Fall Limited Edition Sneakers</h1>
+        <p class="description">
+          These low-profile sneakers are your perfect casual wear companion. Featuring a 
+          durable rubber outer sole, they’ll withstand everything the weather can offer.
+        </p>
 
-  These low-profile sneakers are your perfect casual wear companion. Featuring a 
-  durable rubber outer sole, they’ll withstand everything the weather can offer.
+        <div class="price-section">
+          <div class="current-price">$125.00</div>
+          <div class="old-price">$250.00</div>
+          <div class="promotion">50%</div>
+        </div>
 
-  $125.00
-  50%
-  $250.00
+        <div class="buttons-section">
+          <div class="amount-items">
+            <img src="images/icon-minus.svg" alt="">
+            <span>0</span>
+            <img src="images/icon-plus.svg" alt="">
+          </div>
+          <button type="button"><img src="images/icon-cart.svg" alt="">Add to cart</button>
+        </div>
+      </div>
+    </div>
 
-  0
-  Add to cart
+  </div>
   <script src="e-commerce-app.js"></script>
 </body>
 </html>
