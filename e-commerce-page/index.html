@@ -17,8 +17,8 @@
         <img class="hamburger" src="images/icon-menu.svg" alt="">
         <img class="logo" src="images/logo.svg" alt="">
       </div>
-
-      <nav class="hidden">
+      <!-- nav links -->
+      <nav class="">
         <img class="btn-close" src="images/icon-close.svg" alt="">
         <ul class="links-list">
           <li>Collections</li>
@@ -30,9 +30,34 @@
       </nav>
   
       <div class="profile-cart-section">
-        <img class="profile-cart" src="images/icon-cart.svg" alt="">
+        <div class="profile-cart">
+          <img src="images/icon-cart.svg" alt="">
+          <span class="number-item-on-cart-icon"></span>
+        </div>
         <img class="profile-avatar" src="images/image-avatar.png" alt="">
+        <!-- modal cart -->
+        <div class="modal-cart hidden">
+          <div class="modal-cart-header">
+            <span>Cart</span>
+          </div>
+          <div class="modal-cart-items-list">
+            <div class="modal-cart-item">
+              <img class="cart-item-img" src="images/image-product-1-thumbnail.jpg" alt="">
+              <div class="cart-item-information">
+                <div class="cart-item-information-name">
+                  Fall Limited Edition Sneakers
+                </div>
+                <div class="cart-item-information-price">
+                  $125.00 x <span class="number-item-cart">3</span> <span class="total-price-cart">$375.00</span>
+                </div>
+              </div>
+              <img class="icon-delete-cart" src="images/icon-delete.svg" alt="">
+            </div>
+            <button type="button">Checkout</button>
+          </div>
+        </div>
       </div>
+      
     </header>
 
     <!-- content section -->
@@ -60,16 +85,18 @@
         </p>
 
         <div class="price-section">
-          <div class="current-price">$125.00</div>
+          <div class="current-price-information">
+            <div class="current-price">$125.00</div>
+            <div class="promotion">50%</div>
+          </div>
           <div class="old-price">$250.00</div>
-          <div class="promotion">50%</div>
         </div>
 
         <div class="buttons-section">
           <div class="amount-items">
-            <img src="images/icon-minus.svg" alt="">
+            <img class="icon-minus" src="images/icon-minus.svg" alt="">
             <span>0</span>
-            <img src="images/icon-plus.svg" alt="">
+            <img class="icon-plus" src="images/icon-plus.svg" alt="">
           </div>
           <button type="button"><img src="images/icon-cart.svg" alt="">Add to cart</button>
         </div>
