@@ -143,6 +143,13 @@ nav{
 .modal-cart-items-list button{
     margin-top: 25px;
 }
+// no item message
+.modal-cart-no-item{
+    @extend %flex-center;
+    width: 100%;
+    height: 180px;
+    color: $dark-grayish-blue;
+}
 
 /* ------------------------------ CONTENT SECTION --------------- */
 /* --------------- IMAGE SECTION --------------- */
@@ -274,15 +281,15 @@ button img{
     cursor: pointer;
 }
 
-.btn-close:hover{
-    transform: scale(1.2);
-}
-.icon-next-box:hover .icon-next, .icon-previous-box:hover .icon-previous{
+.icon-next-box:hover .icon-next, .icon-previous-box:hover .icon-previous, .btn-close:hover{
     filter: invert(57%) sepia(16%) saturate(4180%) hue-rotate(346deg) brightness(101%) contrast(102%);
 }
 
 .links-list li:hover{
     text-decoration: underline;
+}
+.links-list li:active{
+    color: $primary;
 }
 
 .profile-avatar:hover{
@@ -379,7 +386,20 @@ button:hover{
         width: 50px;
     }
 
-    /* ------------------------------ CONTENT SECTION --------------- */
+    /* --------------- CART MODAL --------------- */
+    .modal-cart{
+        right: -25px;
+        bottom: -310px;
+        width: 400px;
+        border-radius: 10px;
+        box-shadow: 0px 10px 25px -3px rgba(0,0,0,0.1);
+    }
+    .modal-cart-items-list button{
+        width: 100%;
+        height: 50px;
+    }
+
+    /* ------------------------------ CONTENT SECTION -------------------- */
     .content{
         display: flex;
         margin: 90px auto 0 auto;

@@ -31,7 +31,7 @@
   
       <div class="profile-cart-section">
         <div class="profile-cart">
-          <img src="images/icon-cart.svg" alt="">
+          <img class="profile-cart-icon" src="images/icon-cart.svg" alt="">
           <span class="number-item-on-cart-icon"></span>
         </div>
         <img class="profile-avatar" src="images/image-avatar.png" alt="">
@@ -41,19 +41,10 @@
             <span>Cart</span>
           </div>
           <div class="modal-cart-items-list">
-            <div class="modal-cart-item">
-              <img class="cart-item-img" src="images/image-product-1-thumbnail.jpg" alt="">
-              <div class="cart-item-information">
-                <div class="cart-item-information-name">
-                  Fall Limited Edition Sneakers
-                </div>
-                <div class="cart-item-information-price">
-                  $125.00 x <span class="number-item-cart">3</span> <span class="total-price-cart">$375.00</span>
-                </div>
-              </div>
-              <img class="icon-delete-cart" src="images/icon-delete.svg" alt="">
-            </div>
-            <button type="button">Checkout</button>
+            
+          <!--
+            generate from JS when adding items to cart
+          -->
           </div>
         </div>
       </div>
@@ -69,14 +60,14 @@
           <div class="icon-next-box"><img class="icon-next" src="images/icon-next.svg" alt=""></div>
         </div>
         <ul class="images-list">
-          <li><img class="focus-image" src="images/image-product-1-thumbnail.jpg" alt=""></li>
-          <li><img src="images/image-product-2-thumbnail.jpg" alt=""></li>
-          <li><img src="images/image-product-3-thumbnail.jpg" alt=""></li>
-          <li><img src="images/image-product-4-thumbnail.jpg" alt=""></li>
+          <li><img data-id="1" class="focus-image" src="images/image-product-1-thumbnail.jpg" alt=""></li>
+          <li><img data-id="2" src="images/image-product-2-thumbnail.jpg" alt=""></li>
+          <li><img data-id="3" src="images/image-product-3-thumbnail.jpg" alt=""></li>
+          <li><img data-id="4" src="images/image-product-4-thumbnail.jpg" alt=""></li>
         </ul>
       </div>
 
-      <div class="information-section">
+      <div data-id="01234" class="information-section">
         <h2 class="brand-name">SNEAKER COMPANY</h2>
         <h1 class="item-name">Fall Limited Edition Sneakers</h1>
         <p class="description">
@@ -98,7 +89,7 @@
             <span>0</span>
             <img class="icon-plus" src="images/icon-plus.svg" alt="">
           </div>
-          <button type="button"><img src="images/icon-cart.svg" alt="">Add to cart</button>
+          <button class="add-btn" type="button"><img src="images/icon-cart.svg" alt="">Add to cart</button>
         </div>
       </div>
     </div>
