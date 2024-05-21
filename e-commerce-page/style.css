@@ -19,6 +19,30 @@ body {
   background-color: hsl(0, 0%, 100%);
 }
 
+/* Button to go bak home */
+.back-home {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.back-home:hover a img {
+  width: 30px;
+}
+
+.back-home a img {
+  width: 25px;
+  transition: all 0.2s;
+}
+
 /* ------------------------------ MOBILE STYLE ------------------------------ */
 /* ------------------------------ HEADER --------------- */
 header {
@@ -336,6 +360,11 @@ button:hover {
 /* --------------------------------------------------------------------------- */
 /* ------------------------------ DESKTOP STYLE ------------------------------ */
 @media only screen and (min-width: 768px) {
+  /* Button to go bak home */
+  .back-home {
+    top: 5px;
+    left: 5px;
+  }
   /* --------------- NAV LINK --------------- */
   .container {
     width: 90%;
