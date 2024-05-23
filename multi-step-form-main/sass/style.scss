@@ -79,6 +79,7 @@ body{
 .modal-description{
   color: $description-color;
   font-size: $font-size-description;
+  margin-top: 10px;
 }
 .btn-next{
   width: 120px;
@@ -103,11 +104,17 @@ body{
   width: 120px;
   height: 50px;
   border: none;
-  background-color: $button-color;
+  background-color: transparent;
   border-radius: 6px;
   position: absolute;
   bottom: 0px;
   left: 0px;
+  font-weight: $bold-font;
+  color: $description-color;
+}
+.btn-back:hover{
+  cursor: pointer;
+  color: $primary-color-text;
 }
 
 /* -------------------- STEP ONE -------------------- */
@@ -126,7 +133,7 @@ body{
       color: $primary-color-text;
     }
     input{
-      border: 1px solid $cool-gray;
+      border: 1px solid $border-gray;
       height: 50px;
       width: 97%;
       border-radius: 5px;
@@ -150,19 +157,54 @@ body{
   position: relative;
 
   .plan-selection-section{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
 
     .plan-selection-card{
-      img{
+      width: 30%;
+      border: 2px solid $border-gray;
+      border-radius: 10px;
+      height: 180px;
 
+      img{
+        margin: 20px 0px 40px 20px;
+        width: 50px;
       }
 
       .selection-title{
-
+        margin-left: 20px;
+        color: $primary-color-text;
+        font-size: $font-size-description;
       }
 
       .selection-description{
-
+        margin: 10px 0px 0px 20px;
+        color: $description-color;
       }
+    }
+    .plan-selection-card:hover{
+      cursor: pointer;
+      border: 2px solid $input-focus;
+      background-color: $bg-element;
+    }
+  }
+
+  .month-annual-selection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: $bg-element;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 40px;
+
+    p{
+      font-weight: $medium-font;
+    }
+    .selected{
+      color: $primary-color-text;
     }
   }
 }
@@ -197,7 +239,7 @@ body{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: $primary-color-text;
     -webkit-transition: .4s;
     transition: .4s;
   }
@@ -215,11 +257,11 @@ body{
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+    background-color: $primary-color-text;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px $primary-color-text;
   }
   
   input:checked + .slider:before {

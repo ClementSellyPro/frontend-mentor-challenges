@@ -77,6 +77,7 @@ body {
 .modal-description {
   color: hsl(231, 11%, 63%);
   font-size: 1.1em;
+  margin-top: 10px;
 }
 
 .btn-next {
@@ -105,11 +106,18 @@ body {
   width: 120px;
   height: 50px;
   border: none;
-  background-color: hsl(213, 96%, 18%);
+  background-color: transparent;
   border-radius: 6px;
   position: absolute;
   bottom: 0px;
   left: 0px;
+  font-weight: 700;
+  color: hsl(231, 11%, 63%);
+}
+
+.btn-back:hover {
+  cursor: pointer;
+  color: hsl(213, 96%, 18%);
 }
 
 /* -------------------- STEP ONE -------------------- */
@@ -149,6 +157,52 @@ body {
   margin: 70px 12% 3% 8%;
   position: relative;
 }
+.step-two-modal .plan-selection-section {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.step-two-modal .plan-selection-section .plan-selection-card {
+  width: 30%;
+  border: 2px solid hsl(231, 11%, 63%);
+  border-radius: 10px;
+  height: 180px;
+}
+.step-two-modal .plan-selection-section .plan-selection-card img {
+  margin: 20px 0px 40px 20px;
+  width: 50px;
+}
+.step-two-modal .plan-selection-section .plan-selection-card .selection-title {
+  margin-left: 20px;
+  color: hsl(213, 96%, 18%);
+  font-size: 1.1em;
+}
+.step-two-modal .plan-selection-section .plan-selection-card .selection-description {
+  margin: 10px 0px 0px 20px;
+  color: hsl(231, 11%, 63%);
+}
+.step-two-modal .plan-selection-section .plan-selection-card:hover {
+  cursor: pointer;
+  border: 2px solid hsl(243, 100%, 62%);
+  background-color: hsl(231, 100%, 99%);
+}
+.step-two-modal .month-annual-selection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: hsl(231, 100%, 99%);
+  height: 50px;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+.step-two-modal .month-annual-selection p {
+  font-weight: 500;
+}
+.step-two-modal .month-annual-selection .selected {
+  color: hsl(213, 96%, 18%);
+}
+
 .hidden {
   display: none;
 }
@@ -176,7 +230,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: hsl(213, 96%, 18%);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -194,11 +248,11 @@ body {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: hsl(213, 96%, 18%);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px hsl(213, 96%, 18%);
 }
 
 input:checked + .slider:before {

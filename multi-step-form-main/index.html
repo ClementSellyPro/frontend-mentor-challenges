@@ -49,7 +49,7 @@
     <!-- Sidebar end -->
 
     <!-- Step 1 start -->
-    <div class="step-one-modal hidden">
+    <div class="step-one-modal">
       <h1 class="modal-title">Personal info</h1>
       <p class="modal-description">Please provide your name, email address, and phone number.</p>
       
@@ -64,14 +64,14 @@
         <input type="text" id="phone" placeholder="e.g. +1 234 567 890">
       </div>
     
-      <button class="btn-next" type="button">Next Step</button>
+      <button class="btn-next btn-next-step-one" type="button">Next Step</button>
     </div>
     <!-- Step 1 end -->
 
     <!-- Step 2 start -->
-    <div class="step-two-modal">
+    <div class="step-two-modal hidden">
       <h1 class="modal-title">Select your plan</h1>
-      <p class="modal-description"></p>You have the option of monthly or yearly billing.</p>
+      <p class="modal-description">You have the option of monthly or yearly billing.</p>
 
       <div class="plan-selection-section">
         <div class="plan-selection-card arcade">
@@ -94,16 +94,16 @@
       </div>
 
       <div class="month-annual-selection">
+        <p class="selected">Monthly</p>
         <label class="switch">
           <input type="checkbox">
           <span class="slider round"></span>
         </label>
+        <p>Yearly</p>
       </div>
-      Monthly
-      Yearly
 
-      <button class="btn-back" type="button">Go Back</button>
-      <button class="btn-next" type="button">Next Step</button>
+      <button class="btn-back btn-back-step-two" type="button">Go Back</button>
+      <button class="btn-next btn-next-step-two" type="button">Next Step</button>
     </div>
     <!-- Step 2 end -->
 
@@ -147,8 +147,8 @@
         </div>
       </div>    
     
-      <button class="btn-back" type="button">Go Back</button>
-      <button class="btn-next" type="button">Next Step</button>
+      <button class="btn-back btn-back-step-three" type="button">Go Back</button>
+      <button class="btn-next btn-next-step-three" type="button">Next Step</button>
     </div>
     <!-- Step 3 end -->
 
@@ -162,7 +162,7 @@
       Total (per month/year)
 
     
-      <button class="btn-back" type="button">Go Back</button>
+      <button class="btn-back btn-back-step-four" type="button">Go Back</button>
       <button class="btn-next btn-confirm" type="button">Confirm</button>
     </div>
     <!-- Step 4 end -->
