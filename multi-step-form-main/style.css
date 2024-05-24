@@ -29,6 +29,7 @@ body {
 /* -------------------- SIDEBAR SECTION -------------------- */
 .progression-sidebar {
   width: 30%;
+  min-width: 250px;
   background-image: url(/multi-step-form-main/assets/images/bg-sidebar-desktop.svg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -81,11 +82,11 @@ body {
 }
 
 .btn-next {
-  width: 120px;
+  width: 130px;
   height: 50px;
   border: none;
   background-color: hsl(213, 96%, 18%);
-  border-radius: 6px;
+  border-radius: 10px;
   color: hsl(0, 0%, 100%);
   font-size: 16px;
   position: absolute;
@@ -110,9 +111,10 @@ body {
   border-radius: 6px;
   position: absolute;
   bottom: 0px;
-  left: 0px;
-  font-weight: 700;
+  left: -20px;
+  font-weight: 500;
   color: hsl(231, 11%, 63%);
+  font-size: 1.1em;
 }
 
 .btn-back:hover {
@@ -120,10 +122,19 @@ body {
   color: hsl(213, 96%, 18%);
 }
 
+.btn-disabled {
+  background-color: hsl(228, 100%, 84%);
+}
+
+.btn-disabled:hover {
+  cursor: not-allowed;
+  background-color: hsl(228, 100%, 84%);
+}
+
 /* -------------------- STEP ONE -------------------- */
 .step-one-modal {
   width: 55%;
-  margin: 70px 12% 3% 8%;
+  margin: 60px 12% 3% 10%;
   position: relative;
 }
 .step-one-modal .input-section {
@@ -154,7 +165,7 @@ body {
 /* -------------------- STEP TWO -------------------- */
 .step-two-modal {
   width: 55%;
-  margin: 70px 12% 3% 8%;
+  margin: 60px 12% 3% 10%;
   position: relative;
 }
 .step-two-modal .plan-selection-section {
@@ -205,6 +216,144 @@ body {
 
 .hidden {
   display: none;
+}
+
+/* -------------------- STEP THREE -------------------- */
+.step-three-modal {
+  width: 55%;
+  margin: 60px 12% 3% 10%;
+  position: relative;
+}
+.step-three-modal .add-on-selection-section {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 320px;
+}
+.step-three-modal .add-on-selection-section .add-on-selection-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid hsl(231, 11%, 63%);
+  border-radius: 10px;
+  height: 50px;
+  padding: 20px;
+  position: relative;
+}
+.step-three-modal .add-on-selection-section .add-on-selection-card input {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  accent-color: hsl(243, 100%, 62%);
+}
+.step-three-modal .add-on-selection-section .add-on-selection-card .selection-title {
+  font-size: 1.1em;
+  color: hsl(213, 96%, 18%);
+}
+.step-three-modal .add-on-selection-section .add-on-selection-card .selection-description {
+  color: hsl(231, 11%, 63%);
+}
+.step-three-modal .add-on-selection-section .add-on-selection-card .add-on-price {
+  position: absolute;
+  right: 30px;
+}
+.step-three-modal .add-on-selection-section .add-on-selection-card:hover {
+  cursor: pointer;
+  border: 1px solid hsl(243, 100%, 62%);
+}
+.step-three-modal .add-on-selection-section .add-on-selection-card:hover .add-on-price {
+  color: hsl(243, 100%, 62%);
+}
+.step-three-modal .add-on-selection-section .selected {
+  background-color: hsl(217, 100%, 97%);
+  border: 1px solid hsl(243, 100%, 62%);
+}
+.step-three-modal .add-on-selection-section .selected .add-on-price {
+  color: hsl(243, 100%, 62%);
+}
+
+/* -------------------- STEP FOUR -------------------- */
+.step-four-modal {
+  width: 55%;
+  margin: 60px 12% 3% 10%;
+  position: relative;
+}
+.step-four-modal .summary-section {
+  margin-top: 50px;
+  background-color: hsl(231, 100%, 99%);
+  color: hsl(231, 11%, 63%);
+  border-radius: 10px;
+}
+.step-four-modal .summary-section .summary-plan-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 30px;
+  padding: 20px 0px;
+  height: 50px;
+  border-bottom: 1px solid hsl(231, 11%, 63%);
+}
+.step-four-modal .summary-section .summary-plan-section .summury-plan-name {
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+.step-four-modal .summary-section .summary-plan-section .summary-plan-change-link:hover {
+  cursor: pointer;
+  color: hsl(243, 100%, 62%);
+  text-decoration: underline;
+}
+.step-four-modal .summary-section .summary-plan-section .summary-plan-price {
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+}
+.step-four-modal .summary-section .summary-add-on-section .summary-add-on {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 30px;
+  padding: 10px 0px 25px 0px;
+}
+.step-four-modal .summary-section .summary-add-on-section .summary-add-on-price {
+  color: hsl(213, 96%, 18%);
+  font-size: 14px;
+  font-size: 500;
+}
+.step-four-modal .total-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 30px;
+  color: hsl(231, 11%, 63%);
+}
+.step-four-modal .total-section .total-price {
+  color: hsl(243, 100%, 62%);
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+/* -------------------- STEP FIVE -------------------- */
+.step-five-modal {
+  width: 55%;
+  margin: 60px 12% 3% 10%;
+  position: relative;
+}
+.step-five-modal .step-five-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  height: 500px;
+}
+.step-five-modal .step-five-container img {
+  width: 20%;
+  margin-bottom: 20px;
+}
+.step-five-modal .step-five-container .modal-description {
+  text-align: center;
+  line-height: 1.4em;
 }
 
 /* The switch - the box around the slider */

@@ -113,13 +113,13 @@
       <p class="modal-description">Add-ons help enhance your gaming experience.</p>
 
       <div class="add-on-selection-section">
-        <div class="add-on-selection-card">
+        <div class="add-on-selection-card selected">
           <input type="checkbox" class="add-on-checkbox" value="online-service" />
           <div class="add-on-selection-text">
             <h2 class="selection-title">Online service</h2>
             <p class="selection-description">Access to multiplayer games</p>
           </div>
-          <p class="ad-on-price">
+          <p class="add-on-price">
             +$1/mo
           </p>
         </div>
@@ -130,7 +130,7 @@
             <h2 class="selection-title">Larger storage</h2>
             <p class="selection-description">Extra 1TB of cloud save</p>
           </div>
-          <p class="ad-on-price">
+          <p class="add-on-price">
             +$2/mo
           </p>
         </div>
@@ -141,7 +141,7 @@
             <h2 class="selection-title">Customizable Profile</h2>
             <p class="selection-description">Custom theme on your profile</p>
           </div>
-          <p class="ad-on-price">
+          <p class="add-on-price">
             +$2/mo
           </p>
         </div>
@@ -158,29 +158,46 @@
       <p class="modal-description">Double-check everything looks OK before confirming.</p>
     
       <!-- Dynamically add subscription and add-on selections here -->
-
-      Total (per month/year)
-
+      <div class="summary-section">
+        <div class="summary-plan-section">
+          <div class="summury-plan-text">
+            <p class="summury-plan-name">Arcade (<span>Monthly</span>)</p>
+            <p class="summary-plan-change-link">Change</p>
+          </div>
+          <div class="summary-plan-price">$9/mo</div>
+        </div>
+        <div class="summary-add-on-section">
+          <div class="summary-add-on">
+            <p class="summary-add-on-name">Online service</p>
+            <p class="summary-add-on-price">+1$/mo</p>
+          </div>
+        </div>
+      </div>
+      <div class="total-section">
+        <p class="total-text">Total (per <span>month</span>)</p>
+        <p class="total-price">+$12/mo</p>
+      </div>
     
       <button class="btn-back btn-back-step-four" type="button">Go Back</button>
-      <button class="btn-next btn-confirm" type="button">Confirm</button>
+      <button class="btn-next btn-confirm btn-disabled" type="button">Confirm</button>
     </div>
     <!-- Step 4 end -->
-  </div>
-
-  <!-- Step 5 start -->
+  
+    <!-- Step 5 start -->
     <div class="step-five-modal hidden">
-      <img src="assets/images/icon-thank-you.svg" alt="">
+      <div class="step-five-container">
+        <img src="assets/images/icon-thank-you.svg" alt="">
       
-      <h1 class="modal-title">Thank you!</h1>
-      <p class="modal-description">
-        Thanks for confirming your subscription! We hope you have fun 
-        using our platform. If you ever need support, please feel free 
-        to email us at support@loremgaming.com.
-      </p>
+        <h1 class="modal-title">Thank you!</h1>
+        <p class="modal-description">
+          Thanks for confirming your subscription! We hope you have fun 
+          using our platform. If you ever need support, please feel free 
+          to email us at support@loremgaming.com.
+        </p>
+      </div>
     </div>
   <!-- Step 5 end -->
-  
+  </div>
   <script src="app.js"></script>
 </body>
 </html>

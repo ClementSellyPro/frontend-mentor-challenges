@@ -26,6 +26,7 @@ body{
 /* -------------------- SIDEBAR SECTION -------------------- */
 .progression-sidebar{
   width: 30%;
+  min-width: 250px;
   background-image: url(/multi-step-form-main/assets/images/bg-sidebar-desktop.svg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -82,11 +83,11 @@ body{
   margin-top: 10px;
 }
 .btn-next{
-  width: 120px;
+  width: 130px;
   height: 50px;
   border: none;
   background-color: $button-color;
-  border-radius: 6px;
+  border-radius: 10px;
   color: $white;
   font-size: $font-size;
   position: absolute;
@@ -108,19 +109,27 @@ body{
   border-radius: 6px;
   position: absolute;
   bottom: 0px;
-  left: 0px;
-  font-weight: $bold-font;
+  left: -20px;
+  font-weight: $medium-font;
   color: $description-color;
+  font-size: $font-size-description;
 }
 .btn-back:hover{
   cursor: pointer;
   color: $primary-color-text;
 }
+.btn-disabled{
+  background-color: $button-color-disabled;
+}
+.btn-disabled:hover{
+  cursor: not-allowed;
+  background-color: $button-color-disabled;
+}
 
 /* -------------------- STEP ONE -------------------- */
 .step-one-modal{
   width: 55%;
-  margin: 70px 12% 3% 8%;
+  margin: 60px 12% 3% 10%;
   position: relative;
 
   .input-section{
@@ -153,7 +162,7 @@ body{
 /* -------------------- STEP TWO -------------------- */
 .step-two-modal{
   width: 55%;
-  margin: 70px 12% 3% 8%;
+  margin: 60px 12% 3% 10%;
   position: relative;
 
   .plan-selection-section{
@@ -213,8 +222,157 @@ body{
   display: none;
 }
 
+/* -------------------- STEP THREE -------------------- */
+.step-three-modal{
+  width: 55%;
+  margin: 60px 12% 3% 10%;
+  position: relative;
 
+  .add-on-selection-section{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 320px;
 
+    .add-on-selection-card{
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border: 1px solid $border-gray;
+      border-radius: 10px;
+      height: 50px;
+      padding: 20px;
+      position: relative;
+
+      input{
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        accent-color: $input-focus;
+      }
+      .selection-title{
+        font-size: $font-size-description;
+        color: $primary-color-text;
+      }
+      .selection-description{
+        color: $description-color;
+      }
+
+      .add-on-price{
+        position: absolute;
+        right: 30px;
+      }
+    }
+    .add-on-selection-card:hover{
+      cursor: pointer;
+      border: 1px solid $border-hover;
+    }
+    .add-on-selection-card:hover .add-on-price{
+      color: $input-focus;
+    }
+    .selected{
+      background-color: $bg-color;
+      border: 1px solid $border-hover;
+    }
+    .selected .add-on-price{
+      color: $input-focus;
+    }
+  }
+}
+
+/* -------------------- STEP FOUR -------------------- */
+.step-four-modal{
+  width: 55%;
+  margin: 60px 12% 3% 10%;
+  position: relative;
+  
+  .summary-section{
+    margin-top: 50px;
+    background-color: $bg-element;
+    color: $description-color;
+    border-radius: 10px;
+
+    .summary-plan-section{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 30px;
+      padding: 20px 0px;
+      height: 50px;
+      border-bottom: 1px solid $border-gray;
+      
+      .summury-plan-name{
+        color: $primary-color-text;
+        font-weight: $bold-font;
+        font-size: $font-size-description;
+        margin-bottom: 5px;
+      }
+      .summary-plan-change-link:hover{
+        cursor: pointer;
+        color: $border-hover;
+        text-decoration: underline;
+      }
+
+      .summary-plan-price{
+        color: $primary-color-text;
+        font-weight: $bold-font;
+      }
+    }
+    .summary-add-on-section{
+      .summary-add-on{
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 30px;
+        padding: 10px 0px 25px 0px;
+      }
+      .summary-add-on-price{
+        color: $primary-color-text;
+        font-size: $font-size-small;
+        font-size: $medium-font;
+      }
+    }
+  }
+  .total-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 30px;
+    color: $description-color;
+    
+    .total-price{
+      color: $input-focus;
+      font-size: $font-size-large;
+      font-weight: $bold-font;
+    }
+  }
+}
+
+/* -------------------- STEP FIVE -------------------- */
+.step-five-modal{
+  width: 55%;
+  margin: 60px 12% 3% 10%;
+  position: relative;
+
+  .step-five-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    height: 500px;
+
+    img{
+      width: 20%;
+      margin-bottom: 20px;
+    }
+    .modal-description{
+      text-align: center;
+      line-height: 1.4em;
+    }
+  }
+
+}
 
  /* The switch - the box around the slider */
  .switch {
