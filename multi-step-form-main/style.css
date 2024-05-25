@@ -19,7 +19,7 @@ body {
 
 .container {
   width: 70%;
-  min-width: 800px;
+  min-width: 900px;
   height: 650px;
   display: flex;
   background-color: hsl(0, 0%, 100%);

@@ -55,16 +55,16 @@
       
       <div class="input-section">
         <label for="name">Name</label>
-        <input type="text" id="name" placeholder="e.g. Stephen King">
+        <input type="text" id="name" placeholder="e.g. Stephen King" required>
       
         <label for="mail">Email Address</label>
-        <input type="text" id="mail" placeholder="e.g. stephenking@lorem.com">
+        <input type="text" id="mail" placeholder="e.g. stephenking@lorem.com" required>
       
         <label for="phone"></label>Phone Number
-        <input type="text" id="phone" placeholder="e.g. +1 234 567 890">
+        <input type="text" id="phone" placeholder="e.g. +1 234 567 890" required>
       </div>
     
-      <button class="btn-next btn-next-step-one" type="button">Next Step</button>
+      <button class="btn-next btn-next-step-one">Next Step</button>
     </div>
     <!-- Step 1 end -->
 
@@ -96,7 +96,7 @@
       <div class="month-annual-selection">
         <p class="selected">Monthly</p>
         <label class="switch">
-          <input type="checkbox">
+          <input class="switch-billing-choice" type="checkbox">
           <span class="slider round"></span>
         </label>
         <p>Yearly</p>
