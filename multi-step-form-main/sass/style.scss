@@ -174,7 +174,7 @@ body{
       width: 30%;
       border: 2px solid $border-gray;
       border-radius: 10px;
-      height: 180px;
+      padding-bottom: 10px;
 
       img{
         margin: 20px 0px 40px 20px;
@@ -191,8 +191,20 @@ body{
         margin: 10px 0px 0px 20px;
         color: $description-color;
       }
+
+      .freeMonths{
+        margin-top: 5px;
+        color: $primary-color-text;
+        font-size: $font-size-small;
+        font-weight: $medium-font;
+      }
     }
     .plan-selection-card:hover{
+      cursor: pointer;
+      border: 2px solid $input-focus;
+      background-color: $bg-element;
+    }
+    .focus{
       cursor: pointer;
       border: 2px solid $input-focus;
       background-color: $bg-element;
@@ -211,15 +223,12 @@ body{
 
     p{
       font-weight: $medium-font;
+      color: $description-color;
     }
     .selected{
       color: $primary-color-text;
     }
   }
-}
-
-.hidden{
-  display: none;
 }
 
 /* -------------------- STEP THREE -------------------- */
@@ -373,6 +382,12 @@ body{
   }
 
 }
+
+
+.hidden{
+  display: none;
+}
+
 
  /* The switch - the box around the slider */
  .switch {

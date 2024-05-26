@@ -16,7 +16,12 @@ let inputPhone = document.getElementById('phone');
 
 // modal two - Select your plan
 let planSelectionCards = document.querySelectorAll('.plan-selection-card');
+let planDescriptions = document.querySelectorAll('.plan-selection-card .selection-description');
 let billingChoice = document.querySelector('.switch-billing-choice');
+let monthlyChoiceText = document.querySelector('.monthlyChoice');
+let yearlyChoiceText = document.querySelector('.yearlyChoice');
+let planPrice = document.querySelectorAll('.plan-price');
+
 
 // buttons
 let btnNextOne = document.querySelector('.btn-next-step-one');
@@ -28,11 +33,15 @@ let btnBackFour = document.querySelector('.btn-back-step-four');
 let btnConfirm = document.querySelector('.btn-confirm');
 
 /* -------------------- VARIABLES INITIALIZATION -------------------- */
+// modal 1
 let userName = '';
 let userMail = '';
 let userPhone = '';
+// modal 2
 let planSelected = '';
-let planSelectionBillChoice = '';
+let planSelectionBillChoice = 'Month';
+let planMonthlyPrice = [9, 12, 15];
+// modal 3
 let addOnsSelection = [];
 
 /* --------------------      FUNCTIONS       -------------------- */
@@ -72,14 +81,63 @@ function getUserInfo(){
 }
 
 // modal 2 - plan selected and billing - see the events for modal 2
-function planSelection(){
-
+function planSelection(target){
+    resetSelectedPlan();
+    target.classList.add('focus');
+    classListSelected = target.classList;
+    planSelected = classListSelected[1];
 }
+
+function resetSelectedPlan(){
+    for(let i = 0; i < planSelectionCards.length; i++){
+        if(planSelectionCards[i].classList.contains('focus')){
+            planSelectionCards[i].classList.remove('focus');
+        }
+    }
+}
+
+function billingChoiceSelection(){
+    if(planSelectionBillChoice === 'Month'){
+        planSelectionBillChoice = 'Year';
+        monthlyChoiceText.classList.remove('selected');
+        yearlyChoiceText.classList.add('selected');
+    }else{
+        planSelectionBillChoice = 'Month';
+        monthlyChoiceText.classList.add('selected');
+        yearlyChoiceText.classList.remove('selected');
+    }
+    updatePlanCardUI();
+}
+
+function updatePlanCardUI(){
+    if(planSelectionBillChoice === 'Year'){
+        for(let i = 0; i < planDescriptions.length; i++){
+            let freeMonthsText = document.createElement('div');
+            freeMonthsText.setAttribute('class', 'freeMonths');
+            freeMonthsText.innerHTML = '2 months free';
+            planDescriptions[i].appendChild(freeMonthsText);
+
+            planPrice[i].innerHTML = `$${planMonthlyPrice[i]*10}/yr`;
+            // console.log(planMonthlyPrice[i]*10);
+        }
+    }
+    if(planSelectionBillChoice === 'Month'){
+        let freeMonthsList = document.querySelectorAll('.freeMonths');
+        for(let i = 0; i < planDescriptions.length; i++){
+            planDescriptions[i].removeChild(freeMonthsList[i]);
+
+            
+            planPrice[i].innerHTML = `$${planMonthlyPrice[i]}/mo`;
+        }
+    }
+}
+
 
 /* --------------------      EVENTS         -------------------- */
 /* ----- change modal pages ----- */
 // page 1 to page 2
-btnNextOne.addEventListener('click', () => {
+btnNextOne.addEventListener('click', (event) => {
+    event.preventDefault();
     if(inputName.value !== '' && inputMail.value != '' && inputPhone.value != ''){
         modalOne.classList.add('hidden');
         modalTwo.classList.remove('hidden');
@@ -118,13 +176,13 @@ btnBackFour.addEventListener('click', () => {
     updateUI();
 })
 
-/* Modal 2 events */
+/* ----- Modal 2 events ----- */
 for(let i = 0; i < planSelectionCards.length; i++){
-    planSelectionCards[i].addEventListener('click', (event) => {
-        console.log(event.target.classList);
+    planSelectionCards[i].addEventListener('click', () => {
+        planSelection(planSelectionCards[i]);
     });
 }
 
 billingChoice.addEventListener('click', () => {
-    console.log('yes yes');
+    billingChoiceSelection();
 });

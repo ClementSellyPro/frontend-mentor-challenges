@@ -177,7 +177,7 @@ body {
   width: 30%;
   border: 2px solid hsl(231, 11%, 63%);
   border-radius: 10px;
-  height: 180px;
+  padding-bottom: 10px;
 }
 .step-two-modal .plan-selection-section .plan-selection-card img {
   margin: 20px 0px 40px 20px;
@@ -192,7 +192,18 @@ body {
   margin: 10px 0px 0px 20px;
   color: hsl(231, 11%, 63%);
 }
+.step-two-modal .plan-selection-section .plan-selection-card .freeMonths {
+  margin-top: 5px;
+  color: hsl(213, 96%, 18%);
+  font-size: 14px;
+  font-weight: 500;
+}
 .step-two-modal .plan-selection-section .plan-selection-card:hover {
+  cursor: pointer;
+  border: 2px solid hsl(243, 100%, 62%);
+  background-color: hsl(231, 100%, 99%);
+}
+.step-two-modal .plan-selection-section .focus {
   cursor: pointer;
   border: 2px solid hsl(243, 100%, 62%);
   background-color: hsl(231, 100%, 99%);
@@ -209,13 +220,10 @@ body {
 }
 .step-two-modal .month-annual-selection p {
   font-weight: 500;
+  color: hsl(231, 11%, 63%);
 }
 .step-two-modal .month-annual-selection .selected {
   color: hsl(213, 96%, 18%);
-}
-
-.hidden {
-  display: none;
 }
 
 /* -------------------- STEP THREE -------------------- */
@@ -354,6 +362,10 @@ body {
 .step-five-modal .step-five-container .modal-description {
   text-align: center;
   line-height: 1.4em;
+}
+
+.hidden {
+  display: none;
 }
 
 /* The switch - the box around the slider */
