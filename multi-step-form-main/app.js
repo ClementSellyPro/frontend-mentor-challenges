@@ -39,6 +39,7 @@ let userMail = '';
 let userPhone = '';
 // modal 2
 let planSelected = '';
+let planSelectedPrice = '';
 let planSelectionBillChoice = 'Month';
 let planMonthlyPrice = [9, 12, 15];
 // modal 3
@@ -86,6 +87,19 @@ function planSelection(target){
     target.classList.add('focus');
     classListSelected = target.classList;
     planSelected = classListSelected[1];
+    // get the plan price
+    if(target.classList.contains('arcade')){
+        planSelectedPrice = planPrice[0].innerHTML;
+        console.log(planSelectedPrice);
+    }
+    if(target.classList.contains('advanced')){
+        planSelectedPrice = planPrice[1].innerHTML;
+        console.log(planSelectedPrice);
+    }
+    if(target.classList.contains('pro')){
+        planSelectedPrice = planPrice[2].innerHTML;
+        console.log(planSelectedPrice);
+    }
 }
 
 function resetSelectedPlan(){
@@ -116,17 +130,15 @@ function updatePlanCardUI(){
             freeMonthsText.setAttribute('class', 'freeMonths');
             freeMonthsText.innerHTML = '2 months free';
             planDescriptions[i].appendChild(freeMonthsText);
-
+            // update the price according billing choice (yearly)
             planPrice[i].innerHTML = `$${planMonthlyPrice[i]*10}/yr`;
-            // console.log(planMonthlyPrice[i]*10);
         }
     }
     if(planSelectionBillChoice === 'Month'){
         let freeMonthsList = document.querySelectorAll('.freeMonths');
         for(let i = 0; i < planDescriptions.length; i++){
             planDescriptions[i].removeChild(freeMonthsList[i]);
-
-            
+            // update the price according billing choice (monthly)
             planPrice[i].innerHTML = `$${planMonthlyPrice[i]}/mo`;
         }
     }
@@ -178,7 +190,7 @@ btnBackFour.addEventListener('click', () => {
 
 /* ----- Modal 2 events ----- */
 for(let i = 0; i < planSelectionCards.length; i++){
-    planSelectionCards[i].addEventListener('click', () => {
+    planSelectionCards[i].addEventListener('click', (event) => {
         planSelection(planSelectionCards[i]);
     });
 }
