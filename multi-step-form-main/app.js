@@ -22,6 +22,11 @@ let monthlyChoiceText = document.querySelector('.monthlyChoice');
 let yearlyChoiceText = document.querySelector('.yearlyChoice');
 let planPrice = document.querySelectorAll('.plan-price');
 
+// modal three - Pick add-ons
+let addOnSelectionCards = document.querySelectorAll('.add-on-selection-card');
+let addOnCheckBoxes = document.querySelectorAll('.add-on-checkbox');
+let addOnPrices = document.querySelectorAll('.add-on-price');
+let addOnNames = document.querySelectorAll('.selection-title-add-on');
 
 // buttons
 let btnNextOne = document.querySelector('.btn-next-step-one');
@@ -43,7 +48,8 @@ let planSelectedPrice = '';
 let planSelectionBillChoice = 'Month';
 let planMonthlyPrice = [9, 12, 15];
 // modal 3
-let addOnsSelection = [];
+let addOnsSelection = {};
+let addOnMonthlyPrice = [1,2,2];
 
 /* --------------------      FUNCTIONS       -------------------- */
 function updateUI(){
@@ -144,6 +150,35 @@ function updatePlanCardUI(){
     }
 }
 
+// modal 3 - add-ons picked and billing display
+for(let i = 0; i < addOnSelectionCards.length; i++){
+    addOnSelectionCards[i].addEventListener('click', () => {
+        if(addOnSelectionCards[i].classList.contains('selected')){
+            addOnSelectionCards[i].classList.remove('selected');
+            addOnCheckBoxes[i].checked = false;
+            delete addOnsSelection[i];
+        }else{
+            addOnSelectionCards[i].classList.add('selected');
+            addOnCheckBoxes[i].checked = true;
+            addOnsSelection[i] = `${addOnNames[i].innerText},${addOnPrices[i].innerText}`;
+        }
+        console.log(addOnsSelection);
+    });
+}
+// execute on the Next button click in the 2nd modal
+function updateAddOnPrice(){
+    if(planSelectionBillChoice === 'Month'){
+        for(let i = 0; i < addOnPrices.length; i++){
+            addOnPrices[i].innerText = `+$${addOnMonthlyPrice[i]}/mo`;
+        }
+    }
+    if(planSelectionBillChoice === 'Year'){
+        for(let i = 0; i < addOnPrices.length; i++){
+            addOnPrices[i].innerText = `+$${addOnMonthlyPrice[i]*10}/yr`;
+        }
+    }
+}
+
 
 /* --------------------      EVENTS         -------------------- */
 /* ----- change modal pages ----- */
@@ -165,9 +200,13 @@ btnBackTwo.addEventListener('click', () => {
 });
 // page 2 to page 3
 btnNextTwo.addEventListener('click', () => {
-    modalTwo.classList.add('hidden');
-    modalThree.classList.remove('hidden');
-    updateUI();
+    if(planSelected !== ''){
+        modalTwo.classList.add('hidden');
+        modalThree.classList.remove('hidden');
+        updateAddOnPrice()
+        updateUI();
+    }
+    
 });
 // page 3 to page 2
 btnBackThree.addEventListener('click', () => {
@@ -190,7 +229,7 @@ btnBackFour.addEventListener('click', () => {
 
 /* ----- Modal 2 events ----- */
 for(let i = 0; i < planSelectionCards.length; i++){
-    planSelectionCards[i].addEventListener('click', (event) => {
+    planSelectionCards[i].addEventListener('click', () => {
         planSelection(planSelectionCards[i]);
     });
 }
