@@ -28,6 +28,15 @@ let addOnCheckBoxes = document.querySelectorAll('.add-on-checkbox');
 let addOnPrices = document.querySelectorAll('.add-on-price');
 let addOnNames = document.querySelectorAll('.selection-title-add-on');
 
+// modal four - Finishing up (summary)
+let changePlanLink = document.querySelector('.summary-plan-change-link');
+let summaryPlanName  = document.querySelector('.summary-plan-name');
+let summaryBilling = document.querySelector('.summary-billing');
+let summaryPrice = document.querySelector('.summary-plan-price');
+let summaryAddOns = document.querySelector('.summary-add-on-section');
+let summaryTotalTextBilling = document.querySelector('.total-text-billing');
+let summaryTotalPrice = document.querySelector('.total-price');
+
 // buttons
 let btnNextOne = document.querySelector('.btn-next-step-one');
 let btnBackTwo = document.querySelector('.btn-back-step-two');
@@ -96,15 +105,12 @@ function planSelection(target){
     // get the plan price
     if(target.classList.contains('arcade')){
         planSelectedPrice = planPrice[0].innerHTML;
-        console.log(planSelectedPrice);
     }
     if(target.classList.contains('advanced')){
         planSelectedPrice = planPrice[1].innerHTML;
-        console.log(planSelectedPrice);
     }
     if(target.classList.contains('pro')){
         planSelectedPrice = planPrice[2].innerHTML;
-        console.log(planSelectedPrice);
     }
 }
 
@@ -162,7 +168,6 @@ for(let i = 0; i < addOnSelectionCards.length; i++){
             addOnCheckBoxes[i].checked = true;
             addOnsSelection[i] = `${addOnNames[i].innerText},${addOnPrices[i].innerText}`;
         }
-        console.log(addOnsSelection);
     });
 }
 // execute on the Next button click in the 2nd modal
@@ -178,6 +183,89 @@ function updateAddOnPrice(){
         }
     }
 }
+
+// modal 4 - display the summary
+function updateSummary(){
+    // plan selected
+    planSelectedCapital = planSelected[0].toUpperCase() + planSelected.slice(1);
+    summaryPlanName.innerText = planSelectedCapital;
+    // plan bill
+    summaryPrice.innerHTML = planSelectedPrice;
+    
+    summaryBillingText()
+    addOnListing();
+    totalSum();
+}
+// List add-ons selected
+function addOnListing(){
+    summaryAddOns.innerHTML = '';
+    for(const [key, value] of Object.entries(addOnsSelection)){
+        let valueArray = value.split(',');
+
+        let addOn = document.createElement('div');
+        addOn.setAttribute('class', 'summary-add-on');
+        addOn.innerHTML = `
+        <p class="summary-add-on-name">${valueArray[0]}</p>
+        <p class="summary-add-on-price">${valueArray[1]}</p>
+        `
+        summaryAddOns.appendChild(addOn);
+    }
+}
+// update text according biiling choice
+function summaryBillingText(){
+    // billing apply
+    if(planSelectionBillChoice === 'Month'){
+        summaryBilling.innerText = '(Monthly)';
+    }else{
+        summaryBilling.innerText = '(Yearly)';
+    }
+    // total billing text
+    if(planSelectionBillChoice === 'Month'){
+        summaryTotalTextBilling.innerHTML = '(per month)'
+    }else{
+        summaryTotalTextBilling.innerHTML = '(per year)'
+    }
+}
+// total price sum
+function totalSum(){
+    let total = 0;
+    let plan = 0;
+    let addOns = 0;
+
+    for(const [key, value] of Object.entries(addOnsSelection)){
+        let valueArray = value.split(',')
+        console.log('length: ', valueArray[1].length);
+        if(valueArray[1].length === 6){
+            let result = valueArray[1].slice(2,3);
+            addOns += Number(result);
+        }else{
+            let result = valueArray[1].slice(2,4);
+            addOns += Number(result);
+        }
+    }
+
+    if(planSelectedPrice.length === 5){
+        let result = planSelectedPrice.slice(1,2);
+        plan = Number(result);
+    }else if(planSelectedPrice.length === 6){
+        let result = planSelectedPrice.slice(1,3);
+        plan = Number(result);
+    }else{
+        let result = planSelectedPrice.slice(1,4);
+        plan = Number(result);
+    }
+
+    //console.log(`plan outside for loop: ${plan}`);
+    //console.log(`addOns outside for loop: ${addOns}`);
+    total = plan + addOns;
+    //console.log(`total: ${total}`);
+    if(planSelectionBillChoice === 'Month'){
+        summaryTotalPrice.innerHTML = `+$${total}/mo`;
+    }else{
+        summaryTotalPrice.innerHTML = `+$${total}/yr`;
+    }
+}
+
 
 
 /* --------------------      EVENTS         -------------------- */
@@ -219,6 +307,7 @@ btnNextThree.addEventListener('click', () => {
     modalThree.classList.add('hidden');
     modalFour.classList.remove('hidden');
     updateUI();
+    updateSummary();
 })
 // page 4 to page 3
 btnBackFour.addEventListener('click', () => {
@@ -226,6 +315,12 @@ btnBackFour.addEventListener('click', () => {
     modalThree.classList.remove('hidden');
     updateUI();
 })
+// page 4 to page 5
+btnConfirm.addEventListener('click', () => {
+    modalFour.classList.add('hidden');
+    modalFive.classList.remove('hidden');
+    updateUI();
+});
 
 /* ----- Modal 2 events ----- */
 for(let i = 0; i < planSelectionCards.length; i++){
@@ -236,4 +331,12 @@ for(let i = 0; i < planSelectionCards.length; i++){
 
 billingChoice.addEventListener('click', () => {
     billingChoiceSelection();
+    planSelectedPrice
 });
+
+/* Modal 4 event */
+changePlanLink.addEventListener('click', () => {
+    modalFour.classList.add('hidden');
+    modalTwo.classList.remove('hidden');
+    updateUI();
+})

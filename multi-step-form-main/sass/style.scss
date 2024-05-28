@@ -291,6 +291,13 @@ body{
 }
 
 /* -------------------- STEP FOUR -------------------- */
+.summary-plan-name-section{
+  display: flex;
+}
+.total-text-section{
+  display: flex;
+}
+
 .step-four-modal{
   width: 55%;
   margin: 60px 12% 3% 10%;
@@ -310,8 +317,8 @@ body{
       padding: 20px 0px;
       height: 50px;
       border-bottom: 1px solid $border-gray;
-      
-      .summury-plan-name{
+
+      .summary-plan-name{
         color: $primary-color-text;
         font-weight: $bold-font;
         font-size: $font-size-description;
@@ -326,6 +333,10 @@ body{
       .summary-plan-price{
         color: $primary-color-text;
         font-weight: $bold-font;
+      }
+      .summary-billing{
+        color: $primary-color-text;
+        margin-left: 10px;
       }
     }
     .summary-add-on-section{
@@ -353,6 +364,9 @@ body{
       color: $input-focus;
       font-size: $font-size-large;
       font-weight: $bold-font;
+    }
+    .total-text-billing{
+      margin-left: 10px;
     }
   }
 }

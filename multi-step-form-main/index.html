@@ -170,26 +170,29 @@
       <!-- Dynamically add subscription and add-on selections here -->
       <div class="summary-section">
         <div class="summary-plan-section">
-          <div class="summury-plan-text">
-            <p class="summury-plan-name">Arcade (<span>Monthly</span>)</p>
+          <div class="summary-plan-text">
+            <div class="summary-plan-name-section">
+              <p class="summary-plan-name"> Arcade </p>
+              <div class="summary-billing">(Monthly)</div>
+            </div>
             <p class="summary-plan-change-link">Change</p>
           </div>
           <div class="summary-plan-price">$9/mo</div>
         </div>
         <div class="summary-add-on-section">
-          <div class="summary-add-on">
-            <p class="summary-add-on-name">Online service</p>
-            <p class="summary-add-on-price">+1$/mo</p>
-          </div>
+          <!-- genera in app JS - updateSummary() in modal 4 functions section -->
         </div>
       </div>
       <div class="total-section">
-        <p class="total-text">Total (per <span>month</span>)</p>
-        <p class="total-price">+$12/mo</p>
+        <div class="total-text-section">
+          <p class="total-text">Total </p>
+          <span class="total-text-billing">(per month)</span>
+        </div>
+        <p class="total-price"></p>
       </div>
     
       <button class="btn-back btn-back-step-four" type="button">Go Back</button>
-      <button class="btn-next btn-confirm btn-disabled" type="button">Confirm</button>
+      <button class="btn-next btn-confirm" type="button">Confirm</button>
     </div>
     <!-- Step 4 end -->
   

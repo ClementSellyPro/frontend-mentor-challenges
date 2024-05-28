@@ -282,6 +282,14 @@ body {
 }
 
 /* -------------------- STEP FOUR -------------------- */
+.summary-plan-name-section {
+  display: flex;
+}
+
+.total-text-section {
+  display: flex;
+}
+
 .step-four-modal {
   width: 55%;
   margin: 60px 12% 3% 10%;
@@ -302,7 +310,7 @@ body {
   height: 50px;
   border-bottom: 1px solid hsl(231, 11%, 63%);
 }
-.step-four-modal .summary-section .summary-plan-section .summury-plan-name {
+.step-four-modal .summary-section .summary-plan-section .summary-plan-name {
   color: hsl(213, 96%, 18%);
   font-weight: 700;
   font-size: 1.1em;
@@ -316,6 +324,10 @@ body {
 .step-four-modal .summary-section .summary-plan-section .summary-plan-price {
   color: hsl(213, 96%, 18%);
   font-weight: 700;
+}
+.step-four-modal .summary-section .summary-plan-section .summary-billing {
+  color: hsl(213, 96%, 18%);
+  margin-left: 10px;
 }
 .step-four-modal .summary-section .summary-add-on-section .summary-add-on {
   display: flex;
@@ -339,6 +351,9 @@ body {
   color: hsl(243, 100%, 62%);
   font-size: 1.5em;
   font-weight: 700;
+}
+.step-four-modal .total-section .total-text-billing {
+  margin-left: 10px;
 }
 
 /* -------------------- STEP FIVE -------------------- */
