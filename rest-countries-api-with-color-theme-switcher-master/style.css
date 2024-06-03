@@ -37,7 +37,7 @@ header .theme-toggle-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90px;
+  width: 130px;
 }
 header .theme-toggle-section p {
   font-size: 0.9em;
@@ -95,7 +95,7 @@ header .theme-toggle-section:hover p {
 /* -------------------- Countries Section -------------------- */
 .countries-section {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   padding: 0px 50px;
 }
 .countries-section .card {
@@ -104,6 +104,8 @@ header .theme-toggle-section:hover p {
   width: 22%;
   min-width: 180px;
   border-radius: 10px;
+  margin-right: 3%;
+  margin-bottom: 50px;
 }
 .countries-section .card a {
   text-decoration: none;
@@ -111,6 +113,7 @@ header .theme-toggle-section:hover p {
 }
 .countries-section .card img {
   width: 100%;
+  height: 40%;
 }
 .countries-section .card .country-description {
   padding: 15px 25px;
