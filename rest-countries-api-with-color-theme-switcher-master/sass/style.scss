@@ -22,6 +22,28 @@ body{
     background-color: var(--bg-body);
 }
 
+/* Button to go bak home */
+.back-home{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.back-home:hover a img{
+    width: 30px;
+}
+.back-home a img{
+    width: 25px;
+    transition: all 0.2s;
+}
+
 /* -------------------- Header -------------------- */
 header{
     display: flex;
@@ -168,7 +190,10 @@ header{
     .back-button:hover{
         cursor: pointer;
         i{
-            transform: translateX(-5px);
+            transform: translateX(-3px);
+        }
+        p{
+            font-weight: 700;
         }
     }
 }
@@ -182,6 +207,7 @@ header{
 
     .flag-section{
         width: 50%;
+        max-width: 500px;
 
         img{
             width: 100%;

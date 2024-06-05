@@ -21,6 +21,30 @@ body {
   background-color: var(--bg-body);
 }
 
+/* Button to go bak home */
+.back-home {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.back-home:hover a img {
+  width: 30px;
+}
+
+.back-home a img {
+  width: 25px;
+  transition: all 0.2s;
+}
+
 /* -------------------- Header -------------------- */
 header {
   display: flex;
@@ -154,7 +178,10 @@ header .theme-toggle-section:hover p {
   cursor: pointer;
 }
 .back-button-section .back-button:hover i {
-  transform: translateX(-5px);
+  transform: translateX(-3px);
+}
+.back-button-section .back-button:hover p {
+  font-weight: 700;
 }
 
 .details-page-content {
@@ -165,6 +192,7 @@ header .theme-toggle-section:hover p {
 }
 .details-page-content .flag-section {
   width: 50%;
+  max-width: 500px;
 }
 .details-page-content .flag-section img {
   width: 100%;

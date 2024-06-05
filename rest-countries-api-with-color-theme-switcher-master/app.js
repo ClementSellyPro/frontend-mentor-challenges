@@ -20,6 +20,7 @@ let levelDomain = document.querySelector('.level-domain');
 let currencies = document.querySelector('.currencies');
 let languages = document.querySelector('.languages');
 
+let borderCountries = document.querySelector('.border-countries');
 
 
 /* -------------------- VARIABLES INIT      -------------------- */
@@ -45,7 +46,8 @@ window.addEventListener("load", () => {
     if(localStorage.getItem('selectedCountry') !== null){
         let selectedCountryStore = localStorage.getItem('selectedCountry');
         selectedCountry = JSON.parse(selectedCountryStore);
-    
+
+        // complete all informations for the selected cuontry
         flag.src = selectedCountry.flags.png;
         countryName.innerText = selectedCountry.name;
         nativeName.innerText = selectedCountry.nativeName;
@@ -55,7 +57,25 @@ window.addEventListener("load", () => {
         capital.innerText = selectedCountry.capital;
         levelDomain.innerText = selectedCountry.topLevelDomain[0];
         currencies.innerText = selectedCountry.currencies[0].name;
-        languages.innerText = selectedCountry.languages[0].name;
+        // reach all languages
+        if(selectedCountry.languages.length > 1){
+            for(let i = 0; i < selectedCountry.languages.length; i++){
+                if(i === 0){
+                    languages.innerText = selectedCountry.languages[i].name;
+                }else{
+                    languages.innerText += `, ${selectedCountry.languages[i].name}`;
+                }
+            }
+        }else{
+            languages.innerText = selectedCountry.languages[0].name;
+        }
+        // looking for all border countries 
+        let allBorderCountries = '';
+        for(let i = 0; i < selectedCountry.borders.length; i++){
+            allBorderCountries += `<div class="border-country">${selectedCountry.borders[i]}</div>`;
+        }
+        console.log(allBorderCountries);
+        borderCountries.innerHTML = allBorderCountries;
     }
 });
 
