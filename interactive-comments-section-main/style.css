@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 * {
   margin: 0px;
   padding: 0px;
@@ -5,6 +6,76 @@
 
 body {
   background-color: hsl(223, 19%, 93%);
+  font-family: "Rubik", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment-box {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 10px;
+  background-color: white;
+  width: 700px;
+  padding: 30px;
+}
+.comment-box .interactive-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: hsl(228, 33%, 97%);
+  color: hsl(238, 40%, 52%);
+  padding: 10px;
+  border-radius: 10px;
+  height: 80px;
+}
+.comment-box .interactive-btn .icon-plus, .comment-box .interactive-btn .icon-minus {
+  fill: hsl(238, 40%, 52%);
+  cursor: pointer;
+}
+.comment-box .interactive-btn .interactive-btn-number {
+  margin: 10px 0px;
+  font-weight: 500;
+}
+.comment-box .comment-text-section {
+  margin-left: 20px;
+}
+.comment-box .comment-text-section .comment-text-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 220px;
+}
+.comment-box .comment-text-section .comment-text-section-header .profile-pic {
+  width: 15%;
+}
+.comment-box .comment-text-section .comment-text-section-header .profile-name {
+  color: hsl(212, 24%, 26%);
+}
+.comment-box .comment-text-section .comment-text-section-header .time-posted {
+  color: hsl(211, 10%, 45%);
+  font-size: 0.9em;
+}
+.comment-box .comment-text-section .comment-text {
+  margin-top: 10px;
+  width: 90%;
+}
+.comment-box .reply-btn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  color: hsl(238, 40%, 52%);
+  font-weight: 500;
+}
+.comment-box .reply-btn .icon-reply {
+  margin-right: 5px;
+}
+.comment-box .reply-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 /*# sourceMappingURL=style.css.map */

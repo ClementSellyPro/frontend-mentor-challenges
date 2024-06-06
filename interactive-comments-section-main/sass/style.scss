@@ -1,4 +1,7 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
 *{
     margin: 0px;
     padding: 0px;
@@ -6,4 +9,90 @@
 
 body{
     background-color: hsl(223, 19%, 93%);
+    font-family: "Rubik", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+
+    .comments-section{
+
+    }
+}
+
+.comment-box{
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 10px;
+    background-color: white;
+    width: 700px;
+    padding: 30px;
+
+    .interactive-btn{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: hsl(228, 33%, 97%);
+        color: hsl(238, 40%, 52%);
+        padding: 10px;
+        border-radius: 10px;
+        height: 80px;
+
+        .icon-plus, .icon-minus{
+            fill: hsl(238, 40%, 52%);
+            cursor: pointer;
+        }
+        .interactive-btn-number{
+            margin: 10px 0px;
+            font-weight: 500;
+        }
+    }
+
+    .comment-text-section{
+        margin-left: 20px;
+
+        .comment-text-section-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 220px;
+
+            .profile-pic{
+                width: 15%;
+            }
+            .profile-name{
+                color: hsl(212, 24%, 26%);
+            }
+            .time-posted{
+                color: hsl(211, 10%, 45%);
+                font-size: 0.9em;
+            }
+        }
+
+        .comment-text{
+            margin-top: 10px;
+            width: 90%;
+        }
+    }
+
+    .reply-btn{
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        color: hsl(238, 40%, 52%);
+        font-weight: 500;
+
+        .icon-reply{
+            margin-right: 5px;
+        }
+    }
+    .reply-btn:hover{
+        cursor: pointer;
+        opacity: 0.8;
+    }
+
 }
