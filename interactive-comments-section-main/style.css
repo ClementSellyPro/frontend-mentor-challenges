@@ -12,16 +12,11 @@ body {
   align-items: center;
 }
 
-.comment-box {
-  display: flex;
-  align-items: center;
-  position: relative;
-  border-radius: 10px;
-  background-color: white;
-  width: 700px;
-  padding: 30px;
+.container .comments-section {
+  margin-top: 50px;
 }
-.comment-box .interactive-btn {
+
+.interactive-btn {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -31,14 +26,31 @@ body {
   padding: 10px;
   border-radius: 10px;
   height: 80px;
+  width: 40px;
 }
-.comment-box .interactive-btn .icon-plus, .comment-box .interactive-btn .icon-minus {
+.interactive-btn .icon-plus, .interactive-btn .icon-minus {
   fill: hsl(238, 40%, 52%);
   cursor: pointer;
 }
-.comment-box .interactive-btn .interactive-btn-number {
+.interactive-btn .interactive-btn-number {
   margin: 10px 0px;
   font-weight: 500;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+}
+
+.comment-box {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 10px;
+  background-color: white;
+  width: 700px;
+  padding: 30px;
+  margin-bottom: 20px;
 }
 .comment-box .comment-text-section {
   margin-left: 20px;
@@ -48,9 +60,6 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 220px;
-}
-.comment-box .comment-text-section .comment-text-section-header .profile-pic {
-  width: 15%;
 }
 .comment-box .comment-text-section .comment-text-section-header .profile-name {
   color: hsl(212, 24%, 26%);
@@ -76,6 +85,100 @@ body {
 .comment-box .reply-btn:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+
+/* -------------------- Replies Section -------------------- */
+.replies-section {
+  border-left: 2ps solid black;
+  padding-left: 100px;
+}
+.replies-section .reply-box {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 10px;
+  background-color: white;
+  width: 600px;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+.replies-section .comment-text-section {
+  margin-left: 20px;
+}
+.replies-section .comment-text-section .comment-text-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 220px;
+}
+.replies-section .comment-text-section .comment-text-section-header .profile-name {
+  color: hsl(212, 24%, 26%);
+}
+.replies-section .comment-text-section .comment-text-section-header .time-posted {
+  color: hsl(211, 10%, 45%);
+  font-size: 0.9em;
+}
+.replies-section .comment-text-section .comment-text {
+  margin-top: 10px;
+  width: 90%;
+}
+.replies-section .reply-btn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  color: hsl(238, 40%, 52%);
+  font-weight: 500;
+}
+.replies-section .reply-btn .icon-reply {
+  margin-right: 5px;
+}
+.replies-section .reply-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* --------------- Box when replying --------------- */
+.replying-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  height: 150px;
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+.replying-box .area-text {
+  width: 70%;
+  border-radius: 10px;
+  border: 2px solid rgb(207, 207, 207);
+  font-size: 1.2em;
+  font-weight: 500;
+  resize: none;
+}
+.replying-box .area-text:focus {
+  outline: none;
+  border: 2px solid hsl(238, 40%, 52%);
+}
+.replying-box .replying-btn {
+  background-color: hsl(238, 40%, 52%);
+  color: white;
+  width: 75px;
+  height: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.replying-box .replying-btn:hover {
+  cursor: pointer;
+  background-color: hsl(239, 57%, 85%);
+}
+
+.identification {
+  color: hsl(238, 40%, 52%);
+  font-weight: 500;
 }
 
 /*# sourceMappingURL=style.css.map */
