@@ -1,10 +1,14 @@
 /* -------------------- DOM elements select -------------------- */
+// home page
 let body = document.querySelector('body');
 let btnTheme = document.querySelector('.theme-toggle-section');
 let iconTheme = document.querySelector('.fa-regular');
 
 let cardSection = document.querySelector('.countries-section');
 let allCards = null; // collected in createCardAndApplyData()
+
+let input = document.querySelector('.user-input');
+let continentFilter = document.getElementById('country-select');
 
 // details page DOM element
 let btnBack = document.querySelector('.back-button-section');
@@ -29,7 +33,7 @@ let isDarkTheme = false;
 let selectedCountry = null;
 
 
-/* ---------- Get data from local storage a onLoad ---------- */
+/* ---------- Get data from local storage a onLoad for the details page ---------- */
 window.addEventListener("load", () => {
     /* Load curent theme selected */
     let currentTheme = localStorage.getItem("isDark");
@@ -84,25 +88,40 @@ window.addEventListener("load", () => {
 /* -------------------- FUNCTIONS           -------------------- */
 
 if(window.location.href === 'http://127.0.0.1:5500/rest-countries-api-with-color-theme-switcher-master/index.html'){
-async function createCardAndApplyData(){
+let userInput = ''; 
+let continentSelected = '';
+async function createCardAndApplyData(input, continent){
     let fullData = {};
     await fetch('data.json')
     .then(response => response.json())
     .then(data => fullData = data);
 
-    for(let i = 0; i < fullData.length; i++){
+    // filter by user input
+    let dataToDisplay = fullData;
+    if(input != undefined){
+        dataToDisplay = filterCountries(fullData, input);
+    }
+
+    //filter by continent selection
+    if(continent != undefined){
+        filterCountriesByContinent(fullData, continent);
+    }
+    
+    // reset before display all Data or filter data 
+    cardSection.innerHTML = '';
+    for(let i = 0; i < dataToDisplay.length; i++){
         let card = document.createElement('div');
         card.setAttribute('class', `card ${i}`);
-
+        
         card.innerHTML = `
             <a href="detail-page.html">
-                <img src="${fullData[i].flags.svg}" alt="flags">
+                <img src="${dataToDisplay[i].flags.svg}" alt="flags">
 
                 <div class="country-description">
-                    <h2>${fullData[i].name}</h2>
-                    <p><span class="country-description-detail">Population:</span> ${fullData[i].population}</p>
-                    <p><span class="country-description-detail">Region:</span> ${fullData[i].region}</p>
-                    <p><span class="country-description-detail">Capital:</span> ${fullData[i].capital}</p>
+                    <h2>${dataToDisplay[i].name}</h2>
+                    <p><span class="country-description-detail">Population:</span> ${dataToDisplay[i].population}</p>
+                    <p><span class="country-description-detail">Region:</span> ${dataToDisplay[i].region}</p>
+                    <p><span class="country-description-detail">Capital:</span> ${dataToDisplay[i].capital}</p>
                 </div>
             </a>
         `;
@@ -111,8 +130,29 @@ async function createCardAndApplyData(){
         allCards = document.querySelectorAll('.card');
         collectCardData(allCards, fullData);
 }
-createCardAndApplyData();
+createCardAndApplyData(userInput);
+    
+    // get input user
+    input.addEventListener('change', (e) => {
+        userInput = e.target.value;
+        createCardAndApplyData(userInput);
+    });
+    // get continent selected
+    continentFilter.addEventListener('change', (e) => {
+        continentSelected = e.target.value;
+        createCardAndApplyData(continentSelected);
+    });
 }
+
+// filter the cards according the input
+function filterCountries(rawData, input){
+    return rawData.filter(data => data.name.toLowerCase().includes(input));
+}
+
+function filterCountriesByContinent(rawData,continent){
+    return rawData.filter(data => data.region == continent);
+} 
+
 
 // Collected all card and get data onClick to display on the details page
 let newData = null;
@@ -120,7 +160,7 @@ function collectCardData(list, fullData){
     for(let i = 0; i < list.length; i++){
         list[i].addEventListener('click', () => {
             let classListCard = list[i].classList;
-            newData = fullData[classListCard[1]];;
+            newData = fullData[classListCard[1]];
 
             localStorage.setItem('selectedCountry', JSON.stringify(newData));
         });
