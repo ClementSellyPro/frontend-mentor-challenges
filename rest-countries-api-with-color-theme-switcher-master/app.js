@@ -103,8 +103,10 @@ async function createCardAndApplyData(input, continent){
     }
 
     //filter by continent selection
-    if(continent != undefined){
-        filterCountriesByContinent(fullData, continent);
+    if(continent == '' || continent == undefined){
+        dataToDisplay = fullData;
+    }else{
+        dataToDisplay = filterCountriesByContinent(fullData, continent);
     }
     
     // reset before display all Data or filter data 
@@ -128,19 +130,19 @@ async function createCardAndApplyData(input, continent){
         cardSection.appendChild(card);
     }
         allCards = document.querySelectorAll('.card');
-        collectCardData(allCards, fullData);
+        collectCardData(allCards, dataToDisplay);
 }
 createCardAndApplyData(userInput);
     
     // get input user
     input.addEventListener('change', (e) => {
         userInput = e.target.value;
-        createCardAndApplyData(userInput);
+        createCardAndApplyData(userInput, null);
     });
     // get continent selected
     continentFilter.addEventListener('change', (e) => {
         continentSelected = e.target.value;
-        createCardAndApplyData(continentSelected);
+        createCardAndApplyData(null, continentSelected);
     });
 }
 
@@ -149,8 +151,10 @@ function filterCountries(rawData, input){
     return rawData.filter(data => data.name.toLowerCase().includes(input));
 }
 
-function filterCountriesByContinent(rawData,continent){
-    return rawData.filter(data => data.region == continent);
+function filterCountriesByContinent(rawData, continent){
+    return rawData.filter((data) => {
+        return data.region.toLowerCase() === continent
+});
 } 
 
 
