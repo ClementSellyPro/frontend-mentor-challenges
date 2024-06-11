@@ -17,7 +17,7 @@ function displayComments(fullData){
         let commentary = document.createElement('div');
         commentary.setAttribute('class', 'comment-box');
 
-        commentary.appendChild(createInteractiveButton());
+        commentary.appendChild(createInteractiveButton(fullData[i].score));
         commentary.innerHTML += `
         <div class="comment-box">
             <div class="comment-text-section">
@@ -35,16 +35,17 @@ function displayComments(fullData){
         commentary.appendChild(createReplyButton());
         
         commentSection.appendChild(commentary);
+        commentSection.appendChild(getReplies(fullData[i].replies));
     };
 }
 
 // return an interactive score button
-function createInteractiveButton(){
+function createInteractiveButton(score){
     let interactiveButton = document.createElement('div');
     interactiveButton.setAttribute('class', 'interactive-btn');
     interactiveButton.innerHTML = `
         <img class="icon-plus" src="images/icon-plus.svg" alt="Plus Icon">
-        <span class="interactive-btn-number">12</span>
+        <span class="interactive-btn-number">${score}</span>
         <img class="icon-minus" src="images/icon-minus.svg" alt="Minus Icon">
     `;
 
@@ -62,31 +63,34 @@ function createReplyButton(){
 }
 
 // get replies 
-function getReplies(fullData){
+function getReplies(replies){
 
     let repliesSection = document.createElement('div');
     repliesSection.setAttribute('class', 'replies-section');
-    
-    let reply = document.createElement('div');
-    reply.setAttribute('class', 'reply-box');
-    
-    reply.appendChild(createInteractiveButton);   
-    reply.innerHTML += `
-        <div class="comment-text-section">
-            <div class="comment-text-section-header">
-                <img class="profile-pic" src="images/avatars/image-amyrobson.png" alt="profile">
-                <p class="profile-name">amyrobson</p>
-                <p class="time-posted">1 month ago</p>
-            </div>
-            <div class="comment-text">
-                <span class="identification">@Martine</span> Impressive!  it seems the drag feature could improved. But overall it
-                looks incredible. You've nailed the design and the responsiveness at various
-                breakpoints works really well.
-            </div>
-        </div>
-    `
 
-    reply.appendChild(createReplyButton);          
+
+    for(let i = 0; i < replies.length; i++){
+        let reply = document.createElement('div');
+        reply.setAttribute('class', 'reply-box');
+    
+        reply.appendChild(createInteractiveButton(replies[i].score));   
+        reply.innerHTML += `
+            <div class="comment-text-section">
+                <div class="comment-text-section-header">
+                    <img class="profile-pic" src="${replies[i].user.image.png}" alt="profile">
+                    <p class="profile-name">${replies[i].user.username}</p>
+                    <p class="time-posted">${replies[i].createdAt}</p>
+                </div>
+                <div class="comment-text">
+                    <span class="identification">@${replies[i].replyingTo}</span> ${replies[i].content}
+                </div>
+            </div>
+        `;
+        reply.appendChild(createReplyButton()); 
+        repliesSection.appendChild(reply);
+    }
+
+    return repliesSection;
 }
 
 /* ------------------------- EXECUTION ------------------------- */

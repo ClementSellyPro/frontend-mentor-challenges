@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: hsl(0, 0%, 16%);
+  background-color: hsl(223, 19%, 93%);
   font-family: "Rubik", sans-serif;
   display: flex;
   justify-content: center;
@@ -49,7 +49,7 @@ body {
   border-radius: 10px;
   background-color: white;
   width: 700px;
-  padding: 30px;
+  padding: 20px 30px;
   margin-bottom: 20px;
 }
 .comment-box .comment-text-section {
