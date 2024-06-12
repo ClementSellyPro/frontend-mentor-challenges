@@ -89,8 +89,10 @@ body {
 
 /* -------------------- Replies Section -------------------- */
 .replies-section {
-  border-left: 2ps solid black;
-  padding-left: 100px;
+  border-left: 3px solid rgba(0, 0, 0, 0.1);
+  padding-left: 50px;
+  box-sizing: border-box;
+  margin-left: 50px;
 }
 .replies-section .reply-box {
   display: flex;

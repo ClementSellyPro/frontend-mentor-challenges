@@ -1,7 +1,12 @@
 /* ------------------------- DOM element selection ------------------------- */
 let commentSection = document.querySelector('.comments-section');
 let allCommentsData = {};
-
+// buttons to display a box to add a new reply - fill in --EXECUTION-- part
+let replyButtons = [];
+// elements to get the new reply - fill in --EXECUTION-- part
+let addNewReplyButton = null;
+let newReplyText = null;
+let replying = false;
 
 /* ------------------------- FUNCTIONS ------------------------- */
 // Get data from JSON file
@@ -59,6 +64,7 @@ function createReplyButton(){
         <img class="icon-reply" src="images/icon-reply.svg" alt="Reply icon">
         Reply
     `;
+
     return replyButton;
 }
 
@@ -93,9 +99,83 @@ function getReplies(replies){
     return repliesSection;
 }
 
+// section to add a reply
+function displayReplySection(){
+    let replyingBox = document.createElement('div');
+    replyingBox.setAttribute('class', 'replying-box');
+
+    replyingBox.innerHTML = `
+    <img class="profile-pic" src="images/avatars/image-juliusomo.png" alt="profile pic">
+        <textarea class="area-text" rows="4" cols="50"></textarea>
+        <div class="replying-btn">
+            REPLY
+        </div>
+    `;
+
+    return replyingBox;
+}
+
+function deleteReplySection(){
+    let replyingBox = document.querySelector('.replying-box');
+    // if(){
+
+    // }
+    console.log(containsNode(replyingBox));
+    //commentSection.removeChild(replyingBox);
+
+    /*
+    *
+    *
+    *   The delete function only work when replying a main comment
+    *   and not for a reply
+    * 
+    * 
+    * 
+    */
+
+    
+}
+
+// get data when adding a new reply and delete thes box
+function getNewReply(reply){
+    console.log(reply);
+    deleteReplySection();
+}
+
 /* ------------------------- EXECUTION ------------------------- */
 (async ()=> {
     await getData();
-    console.log(allCommentsData);
+    // display comments and replies
     displayComments(allCommentsData.comments);
-})()
+    // get all reply button, and display a reply section onClick
+    replyButtons = document.querySelectorAll('.reply-btn');
+    for(let i = 0; i < replyButtons.length; i++){
+        replyButtons[i].addEventListener('click', (e) => {
+            if(!replying){
+                replying = true;
+                let commentTarget = e.target.parentElement;
+                commentTarget.after(displayReplySection());
+
+                // add new reply
+                addNewReplyButton = document.querySelector('.replying-btn');
+                newReplyText = document.querySelector('.area-text');
+                addNewReplyButton.addEventListener('click', () => {
+                    getNewReply(newReplyText.value);
+                    replying = false;
+                })
+            }
+        });
+    }
+})();
+
+
+/* ------------------------- EVENTS ------------------------- */
+for(let i = 0; i < replyButtons.length; i++){
+    replyButtons[i].addEventListener('click', () => {
+        console.log('yes');
+    });
+}
+
+// window.addEventListener('click', (e) => {
+//     console.log(e.target);
+// });
