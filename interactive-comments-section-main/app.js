@@ -24,7 +24,6 @@ function displayComments(fullData){
 
         commentary.appendChild(createInteractiveButton(fullData[i].score));
         commentary.innerHTML += `
-        <div class="comment-box">
             <div class="comment-text-section">
                 <div class="comment-text-section-header">
                     <img class="profile-pic" src="${fullData[i].user.image.png}" alt="profile">
@@ -35,7 +34,6 @@ function displayComments(fullData){
                 ${fullData[i].content}
                 </div>
             </div>
-        </div>
         `;
         commentary.appendChild(createReplyButton());
         
@@ -68,7 +66,7 @@ function createReplyButton(){
     return replyButton;
 }
 
-// get replies 
+// get and display all replies 
 function getReplies(replies){
 
     let repliesSection = document.createElement('div');
@@ -115,31 +113,12 @@ function displayReplySection(){
     return replyingBox;
 }
 
-function deleteReplySection(){
-    let replyingBox = document.querySelector('.replying-box');
-    // if(){
-
-    // }
-    console.log(containsNode(replyingBox));
-    //commentSection.removeChild(replyingBox);
-
-    /*
-    *
-    *
-    *   The delete function only work when replying a main comment
-    *   and not for a reply
-    * 
-    * 
-    * 
-    */
-
-    
-}
 
 // get data when adding a new reply and delete thes box
-function getNewReply(reply){
+function getNewReply(reply, replyingBox){
     console.log(reply);
-    deleteReplySection();
+    // remove the current replying box after adding the new reply
+    replyingBox.remove();
 }
 
 /* ------------------------- EXECUTION ------------------------- */
@@ -159,8 +138,9 @@ function getNewReply(reply){
                 // add new reply
                 addNewReplyButton = document.querySelector('.replying-btn');
                 newReplyText = document.querySelector('.area-text');
-                addNewReplyButton.addEventListener('click', () => {
-                    getNewReply(newReplyText.value);
+                addNewReplyButton.addEventListener('click', (e) => {
+                    let currentReplyingBox = e.target.parentElement;
+                    getNewReply(newReplyText.value, currentReplyingBox);
                     replying = false;
                 })
             }

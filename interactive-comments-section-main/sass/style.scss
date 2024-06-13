@@ -1,7 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
-
 *{
     margin: 0px;
     padding: 0px;
@@ -49,6 +48,7 @@ body{
     height: 40px;
 }
 
+/* -------------------- Comments Section -------------------- */
 .comment-box{
     display: flex;
     align-items: center;
@@ -98,9 +98,7 @@ body{
         cursor: pointer;
         opacity: 0.8;
     }
-
 }
-
 
 /* -------------------- Replies Section -------------------- */
 .replies-section{
@@ -207,4 +205,102 @@ body{
 .identification{
     color: hsl(238, 40%, 52%);
     font-weight: 500;
+}
+
+/* ************************* Mobile design ************************* */
+@media only screen and (max-width: 800px){
+    .interactive-btn{
+        flex-direction: row;
+        align-items: center;
+        height: 30px;
+        width: 90px;
+        margin-top: 15px;
+    }
+
+    .comment-box{
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 10px;
+        width: 380px;
+        margin: auto;
+        margin-top: 20px;
+        padding: 20px 20px;
+        position: relative;
+    
+        .comment-text-section{
+            width: 100%;
+            margin: 0px;
+    
+            .comment-text-section-header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 220px;
+            }
+    
+            .comment-text{
+                margin-top: 20px;
+            }
+        }
+    
+        .reply-btn{
+            position: absolute;
+            height: 20px;
+            top: 215px;
+            right: 25px;
+            color: hsl(238, 40%, 52%);
+            font-weight: 500;
+        }
+    }
+}
+
+/* -------------------- Replies Section -------------------- */
+.replies-section{
+    padding-left: 20px;
+    box-sizing: border-box;
+    margin-left: 5px;
+    margin-top: 20px;
+
+    .reply-box{
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        position: relative;
+        width: 340px;
+        padding: 30px;
+        margin-bottom: 20px;
+    }
+
+    .comment-text-section{
+        margin-left: 0px;
+
+        .comment-text{
+            margin-top: 20px;
+            width: 90%;
+        }
+    }
+
+    .reply-btn{
+        top: 220px;
+    }
+}
+
+/* --------------- Box when replying --------------- */
+.replying-box{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    height: 200px;
+    width: 425px;
+    margin-top: 20px;
+    position: relative;
+
+    .area-text{
+        width: 100%;
+    }
+
+    .replying-btn{
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
 }

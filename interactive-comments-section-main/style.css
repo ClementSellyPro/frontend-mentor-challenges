@@ -42,6 +42,7 @@ body {
   height: 40px;
 }
 
+/* -------------------- Comments Section -------------------- */
 .comment-box {
   display: flex;
   align-items: center;
@@ -183,6 +184,92 @@ body {
 .identification {
   color: hsl(238, 40%, 52%);
   font-weight: 500;
+}
+
+/* ************************* Mobile design ************************* */
+@media only screen and (max-width: 800px) {
+  .interactive-btn {
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+    width: 90px;
+    margin-top: 15px;
+  }
+  .comment-box {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 10px;
+    width: 380px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px 20px;
+    position: relative;
+  }
+  .comment-box .comment-text-section {
+    width: 100%;
+    margin: 0px;
+  }
+  .comment-box .comment-text-section .comment-text-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 220px;
+  }
+  .comment-box .comment-text-section .comment-text {
+    margin-top: 20px;
+  }
+  .comment-box .reply-btn {
+    position: absolute;
+    height: 20px;
+    top: 215px;
+    right: 25px;
+    color: hsl(238, 40%, 52%);
+    font-weight: 500;
+  }
+}
+/* -------------------- Replies Section -------------------- */
+.replies-section {
+  padding-left: 20px;
+  box-sizing: border-box;
+  margin-left: 5px;
+  margin-top: 20px;
+}
+.replies-section .reply-box {
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  position: relative;
+  width: 340px;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+.replies-section .comment-text-section {
+  margin-left: 0px;
+}
+.replies-section .comment-text-section .comment-text {
+  margin-top: 20px;
+  width: 90%;
+}
+.replies-section .reply-btn {
+  top: 220px;
+}
+
+/* --------------- Box when replying --------------- */
+.replying-box {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  height: 200px;
+  width: 425px;
+  margin-top: 20px;
+  position: relative;
+}
+.replying-box .area-text {
+  width: 100%;
+}
+.replying-box .replying-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */
