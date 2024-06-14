@@ -88,6 +88,29 @@ body {
   opacity: 0.8;
 }
 
+.edit-buttons {
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  width: 140px;
+  position: absolute;
+  right: 20px;
+  top: 30px;
+}
+.edit-buttons .delete-btn {
+  color: hsl(358, 79%, 66%);
+}
+.edit-buttons .delete-btn img {
+  margin-right: 5px;
+}
+.edit-buttons .delete-btn:hover, .edit-buttons .edit-btn:hover {
+  opacity: 0.4;
+  cursor: pointer;
+}
+.edit-buttons .edit-btn {
+  color: hsl(238, 40%, 52%);
+}
+
 /* -------------------- Replies Section -------------------- */
 .replies-section {
   border-left: 3px solid rgba(0, 0, 0, 0.1);
@@ -198,12 +221,14 @@ body {
   .comment-box {
     flex-direction: column-reverse;
     align-items: flex-start;
+    justify-content: start;
     gap: 10px;
     width: 380px;
     margin: auto;
     margin-top: 20px;
     padding: 20px 20px;
     position: relative;
+    height: 250px;
   }
   .comment-box .comment-text-section {
     width: 100%;
@@ -221,55 +246,57 @@ body {
   .comment-box .reply-btn {
     position: absolute;
     height: 20px;
-    top: 215px;
+    bottom: 15px;
     right: 25px;
     color: hsl(238, 40%, 52%);
     font-weight: 500;
   }
-}
-/* -------------------- Replies Section -------------------- */
-.replies-section {
-  padding-left: 20px;
-  box-sizing: border-box;
-  margin-left: 5px;
-  margin-top: 20px;
-}
-.replies-section .reply-box {
-  flex-direction: column-reverse;
-  align-items: flex-start;
-  position: relative;
-  width: 340px;
-  padding: 30px;
-  margin-bottom: 20px;
-}
-.replies-section .comment-text-section {
-  margin-left: 0px;
-}
-.replies-section .comment-text-section .comment-text {
-  margin-top: 20px;
-  width: 90%;
-}
-.replies-section .reply-btn {
-  top: 220px;
-}
-
-/* --------------- Box when replying --------------- */
-.replying-box {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: space-between;
-  height: 200px;
-  width: 425px;
-  margin-top: 20px;
-  position: relative;
-}
-.replying-box .area-text {
-  width: 100%;
-}
-.replying-box .replying-btn {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  /* -------------------- Replies Section -------------------- */
+  .replies-section {
+    padding-left: 20px;
+    box-sizing: border-box;
+    margin-left: 5px;
+    margin-top: 20px;
+  }
+  .replies-section .reply-box {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    justify-content: start;
+    position: relative;
+    width: 340px;
+    padding: 30px;
+    margin-bottom: 20px;
+    height: 250px;
+  }
+  .replies-section .reply-box .reply-btn {
+    position: absolute;
+    bottom: 20px;
+  }
+  .replies-section .comment-text-section {
+    margin-left: 0px;
+  }
+  .replies-section .comment-text-section .comment-text {
+    margin-top: 20px;
+    width: 90%;
+  }
+  /* --------------- Box when replying --------------- */
+  .replying-box {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    height: 200px;
+    width: 425px;
+    margin-top: 20px;
+    position: relative;
+  }
+  .replying-box .area-text {
+    width: 100%;
+  }
+  .replying-box .replying-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

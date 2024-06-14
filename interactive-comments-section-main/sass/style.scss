@@ -100,6 +100,32 @@ body{
     }
 }
 
+.edit-buttons{
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    width: 140px;
+    position: absolute;
+    right: 20px;
+    top: 30px;
+
+    .delete-btn{
+        color: hsl(358, 79%, 66%);
+
+        img{
+            margin-right: 5px;
+        }
+    }
+    .delete-btn:hover, .edit-btn:hover{
+        opacity: 0.4;
+        cursor: pointer;
+    }
+
+    .edit-btn{
+        color: hsl(238, 40%, 52%);
+    }
+}
+
 /* -------------------- Replies Section -------------------- */
 .replies-section{
     border-left: 3px solid rgba($color: #000000, $alpha: 0.1);
@@ -220,12 +246,14 @@ body{
     .comment-box{
         flex-direction: column-reverse;
         align-items: flex-start;
+        justify-content: start;
         gap: 10px;
         width: 380px;
         margin: auto;
         margin-top: 20px;
         padding: 20px 20px;
         position: relative;
+        height: 250px;
     
         .comment-text-section{
             width: 100%;
@@ -246,61 +274,66 @@ body{
         .reply-btn{
             position: absolute;
             height: 20px;
-            top: 215px;
+            bottom: 15px;
             right: 25px;
             color: hsl(238, 40%, 52%);
             font-weight: 500;
         }
     }
-}
 
-/* -------------------- Replies Section -------------------- */
-.replies-section{
-    padding-left: 20px;
-    box-sizing: border-box;
-    margin-left: 5px;
-    margin-top: 20px;
 
-    .reply-box{
-        flex-direction: column-reverse;
-        align-items: flex-start;
-        position: relative;
-        width: 340px;
-        padding: 30px;
-        margin-bottom: 20px;
-    }
+    /* -------------------- Replies Section -------------------- */
+    .replies-section{
+        padding-left: 20px;
+        box-sizing: border-box;
+        margin-left: 5px;
+        margin-top: 20px;
 
-    .comment-text-section{
-        margin-left: 0px;
+        .reply-box{
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            justify-content: start;
+            position: relative;
+            width: 340px;
+            padding: 30px;
+            margin-bottom: 20px;
+            height: 250px;
 
-        .comment-text{
-            margin-top: 20px;
-            width: 90%;
+            .reply-btn{
+                position: absolute;
+                bottom: 20px;
+            }
         }
+
+        .comment-text-section{
+            margin-left: 0px;
+
+            .comment-text{
+                margin-top: 20px;
+                width: 90%;
+            }
+        }
+
     }
 
-    .reply-btn{
-        top: 220px;
-    }
-}
+    /* --------------- Box when replying --------------- */
+    .replying-box{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        height: 200px;
+        width: 425px;
+        margin-top: 20px;
+        position: relative;
 
-/* --------------- Box when replying --------------- */
-.replying-box{
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
-    height: 200px;
-    width: 425px;
-    margin-top: 20px;
-    position: relative;
+        .area-text{
+            width: 100%;
+        }
 
-    .area-text{
-        width: 100%;
-    }
-
-    .replying-btn{
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
+        .replying-btn{
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
     }
 }

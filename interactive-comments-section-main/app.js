@@ -113,10 +113,47 @@ function displayReplySection(){
     return replyingBox;
 }
 
+// add a new reply, input by user
+function addNewReply(inputReply, currentCommentreplying, currentUser){
+    let repliesSection = document.createElement('div');
+    repliesSection.setAttribute('class', 'replies-section');
+
+    let reply = document.createElement('div');
+    reply.setAttribute('class', 'reply-box');
+
+    reply.appendChild(createInteractiveButton(0));   
+    reply.innerHTML += `
+        <div class="comment-text-section">
+            <div class="comment-text-section-header">
+                <img class="profile-pic" src="${currentUser.image.png}" alt="profile">
+                <p class="profile-name">${currentUser.username}</p>
+                <p class="time-posted">1 minute ago</p>
+            </div>
+            <div class="comment-text">
+                <span class="identification">@John</span> ${inputReply}
+            </div>
+        </div>
+        <div class="edit-buttons">
+            <div class="delete-btn">
+                <img src="images/icon-delete.svg" />
+                Delete
+            </div>
+            <div class="edit-btn">
+                <img src="images/icon-edit.svg" />
+                Edit
+            </div>
+        </div>
+    `;
+    repliesSection.appendChild(reply)
+    
+    currentCommentreplying.after(repliesSection);
+}
 
 // get data when adding a new reply and delete thes box
-function getNewReply(reply, replyingBox){
-    console.log(reply);
+function getNewReply(reply, replyingBox, currentUser){
+    if(reply !== ''){
+        addNewReply(reply, replyingBox, currentUser);
+    }
     // remove the current replying box after adding the new reply
     replyingBox.remove();
 }
@@ -140,7 +177,8 @@ function getNewReply(reply, replyingBox){
                 newReplyText = document.querySelector('.area-text');
                 addNewReplyButton.addEventListener('click', (e) => {
                     let currentReplyingBox = e.target.parentElement;
-                    getNewReply(newReplyText.value, currentReplyingBox);
+                    let currentUser = allCommentsData.currentUser;
+                    getNewReply(newReplyText.value, currentReplyingBox, currentUser);
                     replying = false;
                 })
             }
@@ -148,14 +186,9 @@ function getNewReply(reply, replyingBox){
     }
 })();
 
-
 /* ------------------------- EVENTS ------------------------- */
 for(let i = 0; i < replyButtons.length; i++){
     replyButtons[i].addEventListener('click', () => {
         console.log('yes');
     });
 }
-
-// window.addEventListener('click', (e) => {
-//     console.log(e.target);
-// });
