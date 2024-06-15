@@ -7,6 +7,13 @@ let replyButtons = [];
 let addNewReplyButton = null;
 let newReplyText = null;
 let replying = false;
+// interactive button - fill in --EXECUTION-- part
+let plusIcons = [];
+let minusIcons = [];
+let scoreDisplays = [];
+// delete and edit icon for your replies
+let deleteIcon = null;
+let editIcon = null;
 
 /* ------------------------- FUNCTIONS ------------------------- */
 // Get data from JSON file
@@ -20,7 +27,7 @@ async function getData(){
 function displayComments(fullData){
     for(let i = 0; i < fullData.length; i++){
         let commentary = document.createElement('div');
-        commentary.setAttribute('class', 'comment-box');
+        commentary.setAttribute('class', `comment-box ${fullData[i].user.username}`);
 
         commentary.appendChild(createInteractiveButton(fullData[i].score));
         commentary.innerHTML += `
@@ -75,7 +82,7 @@ function getReplies(replies){
 
     for(let i = 0; i < replies.length; i++){
         let reply = document.createElement('div');
-        reply.setAttribute('class', 'reply-box');
+        reply.setAttribute('class', `reply-box ${replies[i].user.username}`);
     
         reply.appendChild(createInteractiveButton(replies[i].score));   
         reply.innerHTML += `
@@ -114,12 +121,12 @@ function displayReplySection(){
 }
 
 // add a new reply, input by user
-function addNewReply(inputReply, currentCommentreplying, currentUser){
+function addNewReply(inputReply, currentCommentreplying, currentUser, userThatYouReply){
     let repliesSection = document.createElement('div');
     repliesSection.setAttribute('class', 'replies-section');
 
     let reply = document.createElement('div');
-    reply.setAttribute('class', 'reply-box');
+    reply.setAttribute('class', `reply-box ${userThatYouReply}`);
 
     reply.appendChild(createInteractiveButton(0));   
     reply.innerHTML += `
@@ -130,7 +137,7 @@ function addNewReply(inputReply, currentCommentreplying, currentUser){
                 <p class="time-posted">1 minute ago</p>
             </div>
             <div class="comment-text">
-                <span class="identification">@John</span> ${inputReply}
+                <span class="identification">@${userThatYouReply}</span> ${inputReply}
             </div>
         </div>
         <div class="edit-buttons">
@@ -150,12 +157,17 @@ function addNewReply(inputReply, currentCommentreplying, currentUser){
 }
 
 // get data when adding a new reply and delete thes box
-function getNewReply(reply, replyingBox, currentUser){
+function getNewReply(reply, replyingBox, currentUser, userThatYouReply){
     if(reply !== ''){
-        addNewReply(reply, replyingBox, currentUser);
+        addNewReply(reply, replyingBox, currentUser, userThatYouReply);
     }
     // remove the current replying box after adding the new reply
     replyingBox.remove();
+}
+
+// delete one of your replies
+function deleteReply(){
+
 }
 
 /* ------------------------- EXECUTION ------------------------- */
@@ -176,14 +188,38 @@ function getNewReply(reply, replyingBox, currentUser){
                 addNewReplyButton = document.querySelector('.replying-btn');
                 newReplyText = document.querySelector('.area-text');
                 addNewReplyButton.addEventListener('click', (e) => {
+                    let userThatYouReply = e.target.parentElement.previousSibling.classList[1];
                     let currentReplyingBox = e.target.parentElement;
                     let currentUser = allCommentsData.currentUser;
-                    getNewReply(newReplyText.value, currentReplyingBox, currentUser);
+                    getNewReply(newReplyText.value, currentReplyingBox, currentUser, userThatYouReply);
                     replying = false;
+
+
+                    // delete a reply
+                    // deleteIcon = document.querySelector('.delete-btn`');
+                    // deleteIcon.addEventListener('click', () => {
+                    //     console.log('okk');
+                    // });
+
                 })
             }
+
         });
     }
+    
+    plusIcons = document.querySelectorAll('.icon-plus');
+    minusIcons = document.querySelectorAll('.icon-minus');
+    scoreDisplays = document.querySelectorAll('.interactive-btn-number');
+
+    // interactive button to upvote and downvote a comment or reply
+    for(let i = 0; i < plusIcons.length; i++){
+        plusIcons[i].addEventListener('click', (e) => {
+            console.log(e.target.parentElement);
+        });
+    }
+
+    // minusIcon
+    // scoreDisplay
 })();
 
 /* ------------------------- EVENTS ------------------------- */
