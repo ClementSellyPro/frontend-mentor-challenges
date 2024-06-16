@@ -105,13 +105,13 @@ function getReplies(replies){
 }
 
 // section to add a reply
-function displayReplySection(){
+function displayReplySection(reply){
     let replyingBox = document.createElement('div');
     replyingBox.setAttribute('class', 'replying-box');
 
     replyingBox.innerHTML = `
     <img class="profile-pic" src="images/avatars/image-juliusomo.png" alt="profile pic">
-        <textarea class="area-text" rows="4" cols="50"></textarea>
+        <textarea class="area-text" rows="4" cols="50">${reply === undefined ? '' : reply}</textarea>
         <div class="replying-btn">
             REPLY
         </div>
@@ -121,7 +121,7 @@ function displayReplySection(){
 }
 
 // add a new reply, input by user
-function addNewReply(inputReply, currentCommentreplying, currentUser, userThatYouReply){
+function addNewReply(inputReply, currentCommentreplying, currentUser, userThatYouReply, editing){
     let repliesSection = document.createElement('div');
     repliesSection.setAttribute('class', 'replies-section');
 
@@ -130,7 +130,7 @@ function addNewReply(inputReply, currentCommentreplying, currentUser, userThatYo
 
     reply.appendChild(createInteractiveButton(0));   
     reply.innerHTML += `
-        <div class="comment-text-section">
+        ${editing ? '' : '<div class="comment-text-section">'}
             <div class="comment-text-section-header">
                 <img class="profile-pic" src="${currentUser.image.png}" alt="profile">
                 <p class="profile-name">${currentUser.username}</p>
@@ -139,35 +139,120 @@ function addNewReply(inputReply, currentCommentreplying, currentUser, userThatYo
             <div class="comment-text">
                 <span class="identification">@${userThatYouReply}</span> ${inputReply}
             </div>
-        </div>
-        <div class="edit-buttons">
-            <div class="delete-btn">
-                <img src="images/icon-delete.svg" />
-                Delete
+
+            <div class="edit-buttons">
+                <div class="delete-btn">
+                    <img src="images/icon-delete.svg" />
+                    Delete
+                </div>
+                <div class="edit-btn">
+                    <img src="images/icon-edit.svg" />
+                    Edit
+                </div>
             </div>
-            <div class="edit-btn">
-                <img src="images/icon-edit.svg" />
-                Edit
-            </div>
-        </div>
+        ${editing ? '' : '<div>'}
     `;
     repliesSection.appendChild(reply)
     
     currentCommentreplying.after(repliesSection);
+    return editing = false;
 }
 
 // get data when adding a new reply and delete thes box
-function getNewReply(reply, replyingBox, currentUser, userThatYouReply){
+function newReplyAction(reply, replyingBox, currentUser, userThatYouReply){
     if(reply !== ''){
         addNewReply(reply, replyingBox, currentUser, userThatYouReply);
     }
     // remove the current replying box after adding the new reply
     replyingBox.remove();
+
+    if(reply !== ''){
+        // delete a reply
+        deleteIcon = document.querySelector('.delete-btn');
+        deleteIcon.addEventListener('click', (e) => {
+            let targetClass = e.target.parentElement.parentElement.parentElement.classList[0];
+            let target = e.target.parentElement.parentElement.parentElement;
+            let target2 = e.target.parentElement.parentElement.parentElement.parentElement;
+           
+            if(targetClass === 'reply-box'){
+                deleteReply(target);
+            }else if(targetClass === 'comment-text-section'){
+                deleteReply(target2);
+            }
+        });
+
+        // edit a reply
+        editIcon = document.querySelector('.edit-btn');
+        editIcon.addEventListener('click', (e) => {
+            let targetClass = e.target.parentElement.parentElement.parentElement.classList[0];
+            let target = e.target.parentElement.parentElement.parentElement;
+            let target2 = e.target.parentElement.parentElement.parentElement.parentElement;
+
+             if(targetClass === 'reply-box'){
+                editReply(target, reply);
+            }else if(targetClass === 'comment-text-section'){
+                editReply(target2, reply);
+            }
+        });
+    }
+
+    // interactive button to upvote and downvote a comment or reply
+    interactiveButtonAction();
 }
 
 // delete one of your replies
-function deleteReply(){
+function deleteReply(reply){
+    reply.remove();
+}
 
+// edit a reply
+function editReply(replyBoxToEdit, reply){
+    let editing = true;
+
+    replyBoxToEdit.after(displayReplySection(reply));
+    replyBoxToEdit.remove();
+    // add the edit reply
+    addNewReplyButton = document.querySelector('.replying-btn');
+    newReplyText = document.querySelector('.area-text');
+    addNewReplyButton.addEventListener('click', (e) => {
+        let userThatYouReply = e.target.parentElement.parentElement.previousSibling.classList[1];
+        let currentReplyingBox = e.target.parentElement;
+        let currentUser = allCommentsData.currentUser;
+        addNewReply(newReplyText.value, currentReplyingBox, currentUser, userThatYouReply, editing);
+        currentReplyingBox.remove();
+        replying = false;
+    })
+}
+
+// interactive button to upvote and downvote a comment or reply
+function interactiveButtonAction(){
+    plusIcons = document.querySelectorAll('.icon-plus');
+    minusIcons = document.querySelectorAll('.icon-minus');
+    scoreDisplays = document.querySelectorAll('.interactive-btn-number');
+
+    for(let i = 0; i < plusIcons.length; i++){
+        let currentScore = scoreDisplays[i].innerHTML;
+        plusIcons[i].addEventListener('click', (e) => {
+            scoreDisplays[i].innerHTML = Number(currentScore) + 1;
+        });
+        minusIcons[i].addEventListener('click', () => {
+            if(currentScore > 0){
+                scoreDisplays[i].innerHTML = Number(currentScore) - 1
+            }
+        });
+    }
+}
+
+function addReplyAction(){
+    addNewReplyButton = document.querySelector('.replying-btn');
+    newReplyText = document.querySelector('.area-text');
+    addNewReplyButton.addEventListener('click', (e) => {
+        let userThatYouReply = e.target.parentElement.previousSibling.classList[1];
+        let currentReplyingBox = e.target.parentElement;
+        let currentUser = allCommentsData.currentUser;
+        newReplyAction(newReplyText.value, currentReplyingBox, currentUser, userThatYouReply);
+        replying = false;
+    })
 }
 
 /* ------------------------- EXECUTION ------------------------- */
@@ -185,41 +270,12 @@ function deleteReply(){
                 commentTarget.after(displayReplySection());
 
                 // add new reply
-                addNewReplyButton = document.querySelector('.replying-btn');
-                newReplyText = document.querySelector('.area-text');
-                addNewReplyButton.addEventListener('click', (e) => {
-                    let userThatYouReply = e.target.parentElement.previousSibling.classList[1];
-                    let currentReplyingBox = e.target.parentElement;
-                    let currentUser = allCommentsData.currentUser;
-                    getNewReply(newReplyText.value, currentReplyingBox, currentUser, userThatYouReply);
-                    replying = false;
-
-
-                    // delete a reply
-                    // deleteIcon = document.querySelector('.delete-btn`');
-                    // deleteIcon.addEventListener('click', () => {
-                    //     console.log('okk');
-                    // });
-
-                })
+                addReplyAction();
             }
 
         });
     }
     
-    plusIcons = document.querySelectorAll('.icon-plus');
-    minusIcons = document.querySelectorAll('.icon-minus');
-    scoreDisplays = document.querySelectorAll('.interactive-btn-number');
-
-    // interactive button to upvote and downvote a comment or reply
-    for(let i = 0; i < plusIcons.length; i++){
-        plusIcons[i].addEventListener('click', (e) => {
-            console.log(e.target.parentElement);
-        });
-    }
-
-    // minusIcon
-    // scoreDisplay
 })();
 
 /* ------------------------- EVENTS ------------------------- */
