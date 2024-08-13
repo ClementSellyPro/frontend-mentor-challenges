@@ -7,71 +7,142 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   
   <title>Frontend Mentor | Product list with cart</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <h1>Desserts</h1>
 
-  <div class="card">
-    <img src="/assets/images/image-baklava-desktop.jpg";
-    Waffle with Berries
-    Waffle
-    6.50
-    <button>Add to Cart</button>
+  <div class="container">
+    <!-- cards section -->
+    <div class="cards-section">
+
+      <div class="card">
+        <div class="card__picture-part">
+          <img class="card__picture" src="/assets/images/image-baklava-desktop.jpg" alt="Food" />
+          <button class="card__btn">
+            <img src="/assets/images/icon-add-to-cart.svg" alt="Cart" />
+            Add to Cart
+          </button>
+        </div>
+    
+        <div class="card__description">
+          <h3 class="card__title">Waffle</h3>
+          <h2 class="card__full-title">Waffle with Berries</h2>
+          <p class="card__price">$6.50</p>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card__picture-part">
+          <img class="card__picture" src="/assets/images/image-baklava-desktop.jpg" alt="Food" />
+          <button class="card__btn">
+            <img src="/assets/images/icon-add-to-cart.svg" alt="Cart" />
+            Add to Cart
+          </button>
+        </div>
+    
+        <div class="card__description">
+          <h3 class="card__title">Waffle</h3>
+          <h2 class="card__full-title">Waffle with Berries</h2>
+          <p class="card__price">$6.50</p>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card__picture-part">
+          <img class="card__picture" src="/assets/images/image-baklava-desktop.jpg" alt="Food" />
+          <button class="card__btn">
+            <img src="/assets/images/icon-add-to-cart.svg" alt="Cart" />
+            Add to Cart
+          </button>
+        </div>
+    
+        <div class="card__description">
+          <h3 class="card__title">Waffle</h3>
+          <h2 class="card__full-title">Waffle with Berries</h2>
+          <p class="card__price">$6.50</p>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card__picture-part">
+          <img class="card__picture" src="/assets/images/image-baklava-desktop.jpg" alt="Food" />
+          <button class="card__btn">
+            <img src="/assets/images/icon-add-to-cart.svg" alt="Cart" />
+            Add to Cart
+          </button>
+        </div>
+    
+        <div class="card__description">
+          <h3 class="card__title">Waffle</h3>
+          <h2 class="card__full-title">Waffle with Berries</h2>
+          <p class="card__price">$6.50</p>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card__picture-part">
+          <img class="card__picture" src="/assets/images/image-baklava-desktop.jpg" alt="Food" />
+          <button class="card__btn">
+            <img src="/assets/images/icon-add-to-cart.svg" alt="Cart" />
+            Add to Cart
+          </button>
+        </div>
+    
+        <div class="card__description">
+          <h3 class="card__title">Waffle</h3>
+          <h2 class="card__full-title">Waffle with Berries</h2>
+          <p class="card__price">$6.50</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-section">
+      <p class="cart__title">Your Cart (0)</p>
+      <!-- if cart is empty -->
+      <div class="cart__empty">
+        <img class="cart__empty-image" src="/assets/images/illustration-empty-cart.svg" alt="Cakes" />
+        <p class="cart__empty-message">Your added items will appear here</p>
+      </div>
+      <!-- if cart is filled -->
+      <div class="cart__filled">
+        <div class="cart__filled-row">
+          <div class="cart__filled-title">Classic Tiramisu</div>
+          <div class="cart__filled-details">
+            <div class="cart__filled-amount">2x</div>
+            <div class="cart__filled-price">@ $5.50</div>
+            <div class="cart__filled-total-price">$11.00</div>
+          </div>
+          <img class="cart__delete-btn" src="/assets/images/icon-remove-item.svg" alt="Delete button" />
+        </div>
+        
+        <div class="cart__filled-row">
+          <div class="cart__filled-title">Classic Tiramisu</div>
+          <div class="cart__filled-details">
+            <div class="cart__filled-amount">2x</div>
+            <div class="cart__filled-price">@ $5.50</div>
+            <div class="cart__filled-total-price">$11.00</div>
+          </div>
+          <img class="cart__delete-btn" src="/assets/images/icon-remove-item.svg" alt="Delete button" />
+        </div>
+
+        
+        <div class="cart__filled-row-total">
+            <p>Order Total</p>
+            <p class="cart__filled-row-total-price">$46.50</p>
+        </div>
+
+        <div class="cart__carbon-message">
+          <img src="/assets/images/icon-carbon-neutral.svg" />
+          This is a <strong>carbon-neutral</strong> delivery
+        </div>
+
+        <button class="cart__confirm-btn">Confirm Order</button>
+      </div>
+    </div>
+
   </div>
-
-  Vanilla Bean Crème Brûlée
-  Crème Brûlée
-  7.00
-  Add to Cart
-
-  Macaron Mix of Five
-  Macaron
-  8.00
-  Add to Cart
-
-  Classic Tiramisu
-  Tiramisu
-  5.50
-  Add to Cart
-
-  Pistachio Baklava
-  Baklava
-  4.00
-  Add to Cart
-
-  Lemon Meringue Pie
-  Pie
-  5.00
-  Add to Cart
-
-  Red Velvet Cake
-  Cake
-  4.50
-  Add to Cart
-
-  Salted Caramel Brownie
-  Brownie
-  4.50
-  Add to Cart
-
-  Vanilla Panna Cotta
-  Panna Cotta
-  6.50
-  Add to Cart
-
-  Your Cart (<!-- Quantity -->)
-  Your added items will appear here
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+  <script src="app.js"></script>
 </body>
 </html>
