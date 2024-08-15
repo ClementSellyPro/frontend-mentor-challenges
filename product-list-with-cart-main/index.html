@@ -36,34 +36,26 @@
     </div>
 
     <div class="cart-section">
-      <p class="cart__title">Your Cart (0)</p>
+      <p class="cart__title">Your Cart (<span class="cart-items-number">0</span>)</p>
       <!-- if cart is empty -->
       <div class="cart__empty">
         <img class="cart__empty-image" src="/assets/images/illustration-empty-cart.svg" alt="Cakes" />
         <p class="cart__empty-message">Your added items will appear here</p>
       </div>
       <!-- if cart is filled -->
-      <div class="cart__filled">
-        <div class="cart__filled-row">
-          <div class="cart__filled-title">Classic Tiramisu</div>
-          <div class="cart__filled-details">
-            <div class="cart__filled-amount">2x</div>
-            <div class="cart__filled-price">@ $5.50</div>
-            <div class="cart__filled-total-price">$11.00</div>
-          </div>
-          <img class="cart__delete-btn" src="/assets/images/icon-remove-item.svg" alt="Delete button" />
-        </div>
+      <div class="cart__filled hidden">
         
-        <div class="cart__filled-row">
-          <div class="cart__filled-title">Classic Tiramisu</div>
-          <div class="cart__filled-details">
-            <div class="cart__filled-amount">2x</div>
-            <div class="cart__filled-price">@ $5.50</div>
-            <div class="cart__filled-total-price">$11.00</div>
-          </div>
-          <img class="cart__delete-btn" src="/assets/images/icon-remove-item.svg" alt="Delete button" />
+        <div class="cart__filled-items">
+          <!-- <div class="cart__filled-row">
+            <div class="cart__filled-title">Classic Tiramisu</div>
+            <div class="cart__filled-details">
+              <div class="cart__filled-amount">2x</div>
+              <div class="cart__filled-price">@ $5.50</div>
+              <div class="cart__filled-total-price">$11.00</div>
+            </div>
+            <img class="cart__delete-btn" src="/assets/images/icon-remove-item.svg" alt="Delete button" />
+          </div> -->
         </div>
-
         
         <div class="cart__filled-row-total">
             <p>Order Total</p>

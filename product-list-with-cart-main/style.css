@@ -116,9 +116,6 @@ h1{
 }
 
 /* If cart is filled */
-.cart__filled{
-    display: none;
-}
 .cart__filled-row{
     position: relative;
     border-bottom: 1px solid hsl(7, 20%, 60%);
@@ -203,6 +200,10 @@ h1{
     background-color: hsl(14, 86%, 42%);
 }
 
+/* */
+.hidden{
+    display: none;
+}
 
 /* ---------------------------------------- Cards style ---------------------------------------- */
 .modal-container{
