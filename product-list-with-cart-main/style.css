@@ -200,7 +200,7 @@ h1{
     background-color: hsl(14, 86%, 42%);
 }
 
-/* */
+/* hidden elements */
 .hidden{
     display: none;
 }
