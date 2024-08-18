@@ -30,7 +30,7 @@ function displayCards(data){
             <div class="card__picture-part">
             <img class="card__picture" src="${data[i].image.desktop}" alt="Food" />
             <button class="card__btn">
-                <img src="/assets/images/icon-add-to-cart.svg" alt="Cart" />
+                <img class="card__cart-icon" src="/assets/images/icon-add-to-cart.svg" alt="Cart" />
                 Add to Cart
             </button>
             </div>
@@ -47,7 +47,16 @@ function displayCards(data){
 
 // function to add an item in the list (orderList array)
 function addNewItem(id, data){
-    let newItem = {...data[id], 'id':id};
+    let amount = 1;
+    
+    for(let i = 0; i < orderList.length; i++){
+        if(orderList[i].id === id){
+            amount = orderList[i].amount + 1;
+            orderList[i].amount = amount;
+            return;
+        }
+    }
+    let newItem = {...data[id], 'id': id, 'amount': amount};
     orderList.push(newItem);
 }
 
@@ -70,7 +79,9 @@ function isCartEmpty(orderList){
 function defineTotal(orderList){
     totalOrder = 0;
     for(let i = 0; i < orderList.length; i++){
-        totalOrder += Number(orderList[i].price);
+        if(orderList[i].amount > 0){
+            totalOrder += Number(orderList[i].price * orderList[i].amount);
+        }
     }
     totalOrderCart.innerHTML = `$${totalOrder}`;
     totalOrderModal.innerHTML = `$${totalOrder}`;
@@ -83,13 +94,19 @@ function displayCartItems(orderList){
         let orderListItem = document.createElement('div');
         orderListItem.setAttribute('class', 'cart__filled-row');
         orderListItem.setAttribute('data-id', `${orderList[i].id}`)
+        let totalPerProduct = 0;
+        if(orderList[i].amount > 0){
+            totalPerProduct = orderList[i].price * orderList[i].amount;
+        }else{
+            totalPerProduct = orderList[i].price;
+        }
 
         orderListItem.innerHTML = `
           <div class="cart__filled-title">${orderList[i].name}</div>
           <div class="cart__filled-details">
-            <div class="cart__filled-amount">1x</div>
+            <div class="cart__filled-amount">${orderList[i].amount}x</div>
             <div class="cart__filled-price">@ $${orderList[i].price}</div>
-            <div class="cart__filled-total-price">$${orderList[i].price}</div>
+            <div class="cart__filled-total-price">$${totalPerProduct}</div>
           </div>
           <img class="cart__delete-btn" src="/assets/images/icon-remove-item.svg" alt="Delete button" />`;
 
@@ -107,23 +124,35 @@ function deleteItem(orderList, id){
         }
     }
     orderList.splice(index, 1);
+    console.log(orderList);
+    // update display
     displayCartItems(orderList);
     displayModalItems(orderList);
+    defineTotal(orderList);
 }
 
 // display the orderList in the Cart section
 function displayModalItems(orderList){
-    const modalItem = document.createElement('div');
-    modalItem.setAttribute('class', 'modal__order');
+    modalOrderSection.innerHTML = '';
 
     for(let i = 0; i < orderList.length; i++){
+        const modalItem = document.createElement('div');
+        modalItem.setAttribute('class', 'modal__order');
+
+        let totalPerProduct = 0;
+        if(orderList[i].amount > 0){
+            totalPerProduct = orderList[i].price * orderList[i].amount;
+        }else{
+            totalPerProduct = orderList[i].price;
+        }
+
         modalItem.innerHTML = `
             <img class="modal__img" src="${orderList[i].image.thumbnail}" alt="food"/>
             <div class="modal__details">
             <p class="modal__row-title">${orderList[i].name}</p>
-            <p class="modal__row-price"><span>x1</span>  @ $${orderList[i].price}</p>
+            <p class="modal__row-price"><span>x${orderList[i].amount}</span>   @ $${orderList[i].price}</p>
             </div>
-            <span class="modal__row-total-item">$${orderList[i].price}</span>`;
+            <span class="modal__row-total-item">$${totalPerProduct}</span>`;
 
         modalOrderSection.appendChild(modalItem);
     }
@@ -155,12 +184,19 @@ async function execution(){
     // EVENT on add buttons
     for(let i = 0; i < addButtons.length; i++){
         addButtons[i].addEventListener('click', (e) =>{
-            let targetID = e.target.parentElement.parentElement.dataset.id;
+            let targetID;
+            
+            if(e.target.classList.contains("card__cart-icon")){
+                targetID = e.target.parentElement.parentElement.parentElement.dataset.id
+            }else{
+                targetID = e.target.parentElement.parentElement.dataset.id;
+            }
+            console.log(targetID);
             // add new item to orderList array
             addNewItem(targetID, data);
             // check if orderList is empty
             isCartEmpty(orderList);
-            console.log(orderList);
+            
             // display orderList items in Cart section, and in modal section
             defineTotal(orderList);
             displayCartItems(orderList);
@@ -171,7 +207,9 @@ async function execution(){
             // event click delete item in cart section
             for(let j = 0; j < deleteBtn.length; j++){
                 deleteBtn[j].addEventListener('click', (e) => {
+                    console.log('yey');
                     let targetID = e.target.parentElement.dataset.id;
+                    console.log(targetID);
                     deleteItem(orderList, targetID);
                 });
             }
